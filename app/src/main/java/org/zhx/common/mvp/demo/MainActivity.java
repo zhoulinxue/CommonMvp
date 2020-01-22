@@ -48,6 +48,7 @@ public class MainActivity extends MvpActivity<WeatherPresenter> implements Weath
 
     @Override
     public void onWeatherInfo(WeatherInfo info) {
+        //TODO 天气信息 (mPresenter.getWeatherInfo()  接口回调)
         mTextView.setText(info.toString());
     }
 }
