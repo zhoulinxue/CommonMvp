@@ -65,4 +65,39 @@ public abstract class BasePresenter<V extends BaseMvpView> {
                 .build();
         return config;
     }
+
+    public int getPageNumber() {
+        return pageNumber;
+    }
+
+    public void setPageNumber(int pageNumber) {
+        this.pageNumber = pageNumber;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public int getTotalNum() {
+        return mTotalNum;
+    }
+
+    public void setTotalNum(int mTotalNum) {
+        this.mTotalNum = mTotalNum;
+    }
+
+    public int getTotalPage() {
+        return mTotalPage;
+    }
+
+    public void setTotalPage(int mTotalPage) {
+        this.mTotalPage = mTotalPage;
+    }
+    public void setHasMore(boolean hasMore) {
+        this.hasMore = hasMore;
+    }
 }
