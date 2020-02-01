@@ -42,7 +42,7 @@ public class BaseBean<T> implements BaseData {
 
     @Override
     public boolean isSuc() {
-        return "200".equals(code)  || "1".equals(1);
+        return "200".equals(code)  || "1".equals(code);
     }
 
     @Override

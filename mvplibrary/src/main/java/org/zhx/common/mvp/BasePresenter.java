@@ -43,6 +43,7 @@ public abstract class BasePresenter<V extends BaseMvpView> {
      */
     private void creatNewHttpManager() {
         manager = HttpManager.getInstance();
+        manager.setDefaultTag(BasePresenter.class);
         OkConfig config = onCreatHttpCofig();
         manager.initFactoryByTag(config);
         factory = creatNewFactory(config);
@@ -60,7 +61,7 @@ public abstract class BasePresenter<V extends BaseMvpView> {
      * @return
      */
     protected OkConfig onCreatHttpCofig() {
-        OkConfig config = new OkConfigBuilder()
+        OkConfig config = new OkConfigBuilder(BasePresenter.class)
                 .setCallFactory(CommonCallAdapterFactory.create())
                 .build();
         return config;

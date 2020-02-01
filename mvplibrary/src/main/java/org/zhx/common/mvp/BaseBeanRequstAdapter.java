@@ -1,5 +1,7 @@
 package org.zhx.common.mvp;
 
+import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.BaseData;
+
 /**
  * Copyright (C), 2015-2020
  * FileName: BaseBeanRequstAdapter
@@ -7,7 +9,7 @@ package org.zhx.common.mvp;
  * Date: 2020/2/1 11:43
  * Description:
  */
-public class BaseBeanRequstAdapter<T> extends NetRequstAdapter<BaseBean<T>, T> {
+public class BaseBeanRequstAdapter<T> extends NetRequstAdapter<BaseData<T>, T> {
     public BaseBeanRequstAdapter(BaseMvpView mvpView) {
         super(mvpView);
     }
@@ -30,7 +32,7 @@ public class BaseBeanRequstAdapter<T> extends NetRequstAdapter<BaseBean<T>, T> {
     }
 
     @Override
-    public final boolean onResult(BaseBean<T> info) {
+    public final boolean onResult(BaseData<T> info) {
         return false;
     }
 }
