@@ -44,7 +44,7 @@ public abstract class BasePresenter<V extends BaseMvpView> {
     private void creatNewHttpManager() {
         manager = HttpManager.getInstance();
         OkConfig config = onCreatHttpCofig();
-        manager.init(config);
+        manager.initFactoryByTag(config);
         factory = creatNewFactory(config);
     }
 
@@ -64,6 +64,14 @@ public abstract class BasePresenter<V extends BaseMvpView> {
                 .setCallFactory(CommonCallAdapterFactory.create())
                 .build();
         return config;
+    }
+    /**
+     * 取消所有回调
+     */
+    public void onDestory() {
+        for (CommonNetRequest request : mRequests) {
+            request.cancel();
+        }
     }
 
     public int getPageNumber() {

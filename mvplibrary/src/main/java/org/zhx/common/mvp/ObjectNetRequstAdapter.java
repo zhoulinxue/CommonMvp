@@ -15,8 +15,16 @@ public abstract class ObjectNetRequstAdapter<R> extends NetRequstAdapter<R, R> {
         super(mvpView, isShowToast);
     }
 
+    public ObjectNetRequstAdapter(BaseMvpView mvpView, boolean isShowToast, boolean isDismissDialog) {
+        super(mvpView, isShowToast, isDismissDialog);
+    }
+
+    public ObjectNetRequstAdapter(boolean isDismissDialog, BaseMvpView mvpView) {
+        super(isDismissDialog, mvpView);
+    }
+
     @Override
-    public boolean onResult(R info) {
+    public final boolean onResult(R info) {
         onResultData(info);
         return true;
     }
@@ -24,7 +32,7 @@ public abstract class ObjectNetRequstAdapter<R> extends NetRequstAdapter<R, R> {
     protected abstract void onResultData(R info);
 
     @Override
-    public void onData(R r) {
+    public final void onData(R r) {
 
     }
 }

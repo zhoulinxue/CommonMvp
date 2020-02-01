@@ -9,7 +9,7 @@ import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.BaseData;
  * Date: 2020/1/23 9:29
  * Description:
  */
-public class BaseBean<T> implements BaseData<T> {
+public class BaseBean<T> implements BaseData {
     private String code;
 
     private String message;
