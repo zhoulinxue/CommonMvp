@@ -1,8 +1,10 @@
 package org.zhx.common.mvp.demo.presenters;
 
+import org.zhx.common.commonnetwork.commonokhttp.OkConfig;
 import org.zhx.common.mvp.BasePresenter;
 import org.zhx.common.mvp.ObjectNetRequstAdapter;
 import org.zhx.common.mvp.demo.WeatherInfo;
+import org.zhx.common.mvp.demo.retrofit.FastJsonConverterFactory;
 import org.zhx.common.mvp.demo.views.WeatherApi;
 
 /**
@@ -15,6 +17,13 @@ import org.zhx.common.mvp.demo.views.WeatherApi;
 public class WeatherPresenter extends BasePresenter<WeatherApi.view> implements WeatherApi.presenter {
     public WeatherPresenter(WeatherApi.view view) {
         super(view);
+    }
+
+    @Override
+    protected OkConfig onCreatHttpCofig() {
+        OkConfig config=super.onCreatHttpCofig();
+        config.setConverterFactory(FastJsonConverterFactory.create());
+        return config;
     }
 
     @Override
