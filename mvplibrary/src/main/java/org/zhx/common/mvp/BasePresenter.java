@@ -15,6 +15,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import okhttp3.Interceptor;
+
 /**
  * Copyright (C), 2015-2020
  * FileName: BasePresenter
@@ -69,8 +71,16 @@ public abstract class BasePresenter<V extends BaseMvpView> {
                 .setConverterFactory(FastJsonConverterFactory.create())
                 .setHttps(true)
                 .build();
+        if (config.getInterceptor() == null)
+            config.setOkInterceptor(creatHeaderIntercepor());
         return config;
     }
+
+    protected Interceptor creatHeaderIntercepor() {
+        return null;
+    }
+
+    ;
 
     /**
      * 字符串数组 转 map
@@ -78,7 +88,7 @@ public abstract class BasePresenter<V extends BaseMvpView> {
      * @param params
      * @return
      */
-    protected  Map<String, String> genrateMap(String... params) {
+    protected Map<String, String> genrateMap(String... params) {
         Map<String, String> map = new HashMap<>();
         if (params.length >= 2) {
             if (params.length % 2 == 0) {
