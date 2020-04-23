@@ -1,14 +1,19 @@
 package org.zhx.common.mvp;
 
+import android.util.Log;
+
 import org.zhx.common.commonnetwork.HttpManager;
 import org.zhx.common.commonnetwork.OkHttpFactory;
 import org.zhx.common.commonnetwork.commonokhttp.OkConfig;
 import org.zhx.common.commonnetwork.commonokhttp.OkConfigBuilder;
 import org.zhx.common.commonnetwork.commonokhttp.customObservable.CommonCallAdapterFactory;
 import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.CommonNetRequest;
+import org.zhx.common.mvp.retrofit.FastJsonConverterFactory;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Copyright (C), 2015-2020
@@ -46,12 +51,10 @@ public abstract class BasePresenter<V extends BaseMvpView> {
         manager.setDefaultTag(BasePresenter.class);
         OkConfig config = onCreatHttpCofig();
         manager.initFactoryByTag(config);
-        factory = creatNewFactory(config);
+        factory = creatNewFactory();
     }
 
-    protected OkHttpFactory creatNewFactory(OkConfig config) {
-//        OkHttpFactory factory = new OkHttpFactory();
-//        factory.creatDefaultFromCofig(config);
+    protected OkHttpFactory creatNewFactory() {
         return manager.getDefaultFactory();
     }
 
@@ -63,9 +66,35 @@ public abstract class BasePresenter<V extends BaseMvpView> {
     protected OkConfig onCreatHttpCofig() {
         OkConfig config = new OkConfigBuilder(BasePresenter.class)
                 .setCallFactory(CommonCallAdapterFactory.create())
+                .setConverterFactory(FastJsonConverterFactory.create())
+                .setHttps(true)
                 .build();
         return config;
     }
+
+    /**
+     * 字符串数组 转 map
+     *
+     * @param params
+     * @return
+     */
+    protected  Map<String, String> genrateMap(String... params) {
+        Map<String, String> map = new HashMap<>();
+        if (params.length >= 2) {
+            if (params.length % 2 == 0) {
+                for (int i = 0; i < params.length; i++) {
+                    if (i % 2 == 0) {
+                        if (!"null".equals(params[i + 1]))
+                            map.put(params[i], params[i + 1]);
+                    }
+                }
+            } else {
+                Log.e("httpManager", "ApiManager" + "param ....key...value  error");
+            }
+        }
+        return map;
+    }
+
     /**
      * 取消所有回调
      */
@@ -106,6 +135,7 @@ public abstract class BasePresenter<V extends BaseMvpView> {
     public void setTotalPage(int mTotalPage) {
         this.mTotalPage = mTotalPage;
     }
+
     public void setHasMore(boolean hasMore) {
         this.hasMore = hasMore;
     }

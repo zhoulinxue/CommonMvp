@@ -9,7 +9,7 @@ import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.BaseData;
  * Date: 2020/2/1 11:43
  * Description:
  */
-public class BaseBeanRequstAdapter<T> extends NetRequstAdapter<BaseData<T>, T> {
+public abstract class BaseBeanRequstAdapter<T> extends NetRequstAdapter<BaseData<T>, T> {
     public BaseBeanRequstAdapter(BaseMvpView mvpView) {
         super(mvpView);
     }
@@ -24,11 +24,6 @@ public class BaseBeanRequstAdapter<T> extends NetRequstAdapter<BaseData<T>, T> {
 
     public BaseBeanRequstAdapter(boolean isDismissDialog, BaseMvpView mvpView) {
         super(isDismissDialog, mvpView);
-    }
-
-    @Override
-    public void onData(T t) {
-
     }
 
     @Override

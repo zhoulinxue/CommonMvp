@@ -7,7 +7,7 @@ publish {
     artifactId = 'commonMvp'//项目名称，bintray上创建Package时填写的Name项
     publishVersion = '1.1.1'//版本号
     desc = 'easy mvp'//描述，不重要
-    website = 'https://github.com/zhoulinxue/CommonMvp.git'//网站，最好有，不重要
+    website = 'https://github.com/zhoulinxue/CommonMvp.git'//网站，
 }
 android {
     compileSdkVersion 28
@@ -38,4 +38,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     api 'org.zhx.common:commonOkhttp:1.2.1'
+    //fastjson
+    api 'com.alibaba:fastjson:1.1.71.android'
 }
