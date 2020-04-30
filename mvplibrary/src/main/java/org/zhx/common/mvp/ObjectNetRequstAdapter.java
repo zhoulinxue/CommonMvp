@@ -1,5 +1,7 @@
 package org.zhx.common.mvp;
 
+import org.zhx.common.mvp.widgets.BaseMvpView;
+
 /**
  * pakage :company.yinu.android.mvp
  * auther :zx

@@ -6,6 +6,7 @@ import android.util.Log;
 import org.zhx.common.commonnetwork.commonokhttp.NetWorkUtil;
 import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.CommonLocalError;
 import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.CommonNetRequestCallBack;
+import org.zhx.common.mvp.widgets.BaseMvpView;
 
 /**
  * pakage :com.gaea.kiki.mvp

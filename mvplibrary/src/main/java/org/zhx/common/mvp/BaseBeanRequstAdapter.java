@@ -1,6 +1,7 @@
 package org.zhx.common.mvp;
 
 import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.BaseData;
+import org.zhx.common.mvp.widgets.BaseMvpView;
 
 /**
  * Copyright (C), 2015-2020
