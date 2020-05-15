@@ -2,8 +2,6 @@ package org.zhx.common.commonnetwork.commonokhttp;
 
 import android.content.Context;
 
-import org.zhx.common.commonnetwork.HttpManager;
-
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
@@ -192,7 +190,7 @@ public class OkConfigBuilder {
         return this;
     }
 
-    public OkConfig build() {
+    public org.zhx.common.commonnetwork.commonokhttp.OkConfig build() {
         OkConfig config = new OkConfig();
         config.setBaseUrl(mBaseUrl);
         config.setContext(context);

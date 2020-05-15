@@ -1,5 +1,7 @@
 package org.zhx.common.mvp.demo.mvp.presenters;
 
+import android.util.Log;
+
 import org.zhx.common.commonnetwork.commonokhttp.OkConfig;
 import org.zhx.common.mvp.BasePresenter;
 import org.zhx.common.mvp.ObjectNetRequstAdapter;
@@ -28,11 +30,18 @@ public class WeatherPresenter extends BasePresenter<WeatherApi.view> implements 
 
     @Override
     public void getWeatherInfo() {
-        manager.with(WeatherApi.class).getTest().addRequest(mRequests).excute(new ObjectNetRequstAdapter<WeatherInfo>(mView) {
+        manager.with(WeatherApi.class).getTest().excute(new ObjectNetRequstAdapter<WeatherInfo>(mView) {
 
             @Override
             protected void onResultData(WeatherInfo info) {
                 mView.onWeatherInfo(info);
+            }
+        });
+
+        manager.with(WeatherApi.class).getPay().excute(new ObjectNetRequstAdapter<String>(mView) {
+            @Override
+            protected void onResultData(String info) {
+                Log.e("getPay",info);
             }
         });
     }

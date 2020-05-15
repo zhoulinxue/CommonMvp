@@ -14,7 +14,7 @@ import org.zhx.common.mvp.widgets.BaseMvpView;
  * creatTime: 2019/6/28
  */
 abstract class NetRequstAdapter<R, T> implements CommonNetRequestCallBack<R, T> {
-    private BaseMvpView mvpView;
+    protected BaseMvpView mvpView;
     private boolean isShowToast = false;
     private boolean isDismissDialog = true;
 

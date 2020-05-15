@@ -1,7 +1,10 @@
 package org.zhx.common.mvp;
 
 import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.BaseData;
+import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.CommonNetRequest;
 import org.zhx.common.mvp.widgets.BaseMvpView;
+
+import java.util.List;
 
 /**
  * Copyright (C), 2015-2020
@@ -30,5 +33,10 @@ public abstract class BaseBeanRequstAdapter<T> extends NetRequstAdapter<BaseData
     @Override
     public final boolean onResult(BaseData<T> info) {
         return false;
+    }
+
+    @Override
+    public List<CommonNetRequest> getRequestList() {
+        return mvpView.getRequestList();
     }
 }

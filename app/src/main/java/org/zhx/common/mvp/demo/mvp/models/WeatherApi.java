@@ -5,6 +5,7 @@ import org.zhx.common.mvp.widgets.BaseMvpView;
 import org.zhx.common.mvp.demo.bean.WeatherInfo;
 
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 
 /**
  * Copyright (C), 2015-2020
@@ -16,6 +17,10 @@ import retrofit2.http.GET;
 public interface WeatherApi {
     @GET("http://t.weather.sojson.com/api/weather/city/101030100")
     public CommonObservable<WeatherInfo> getTest();
+
+    @GET("http://192.168.10.105:8080/pay?externalUserId=10005&skuId=568")
+    @Headers("")
+    public CommonObservable<String> getPay();
 
     public interface view extends BaseMvpView{
         void onWeatherInfo(WeatherInfo info);

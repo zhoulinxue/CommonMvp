@@ -115,6 +115,10 @@ public abstract class BasePresenter<V extends BaseMvpView> {
         }
     }
 
+    public List<CommonNetRequest> getRequests() {
+        return mRequests;
+    }
+
     public int getPageNumber() {
         return pageNumber;
     }

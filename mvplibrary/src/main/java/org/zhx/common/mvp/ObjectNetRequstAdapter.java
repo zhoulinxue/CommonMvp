@@ -1,6 +1,9 @@
 package org.zhx.common.mvp;
 
+import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.CommonNetRequest;
 import org.zhx.common.mvp.widgets.BaseMvpView;
+
+import java.util.List;
 
 /**
  * pakage :company.yinu.android.mvp
@@ -36,5 +39,10 @@ public abstract class ObjectNetRequstAdapter<R> extends NetRequstAdapter<R, R> {
     @Override
     public final void onData(R r) {
 
+    }
+
+    @Override
+    public List<CommonNetRequest> getRequestList() {
+        return mvpView.getRequestList();
     }
 }

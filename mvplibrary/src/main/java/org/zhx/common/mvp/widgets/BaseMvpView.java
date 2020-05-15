@@ -2,6 +2,10 @@ package org.zhx.common.mvp.widgets;
 
 import android.content.Context;
 
+import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.CommonNetRequest;
+
+import java.util.List;
+
 /**
  * Copyright (C), 2015-2020
  * FileName: BaseMvpView
@@ -25,4 +29,6 @@ public interface BaseMvpView {
     void onError(String code, String msg);
 
     Context getContext();
+
+    List<CommonNetRequest> getRequestList();
 }
