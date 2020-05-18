@@ -38,11 +38,11 @@ public class WeatherPresenter extends BasePresenter<WeatherApi.view> implements 
             }
         });
 
-        manager.with(WeatherApi.class).getPay().excute(new ObjectNetRequstAdapter<String>(mView) {
-            @Override
-            protected void onResultData(String info) {
-                Log.e("getPay",info);
-            }
-        });
+//        manager.with(WeatherApi.class).getPay().excute(new ObjectNetRequstAdapter<Object>(mView) {
+//            @Override
+//            protected void onResultData(Object info) {
+//                Log.e("getPay",info.toString());
+//            }
+//        });
     }
 }
