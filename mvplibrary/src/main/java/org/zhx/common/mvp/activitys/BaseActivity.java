@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.CommonNetRequest;
 import org.zhx.common.mvp.R;
 import org.zhx.common.mvp.api.ViewCreatApi;
 import org.zhx.common.mvp.impl.AlphaTitleProxy;
@@ -22,6 +23,8 @@ import org.zhx.common.mvp.utils.InputMethodUtils;
 import org.zhx.common.mvp.widgets.BaseMvpView;
 import org.zhx.common.mvp.widgets.DialogApi;
 import org.zhx.common.mvp.widgets.LoadingDialog;
+
+import java.util.List;
 
 
 /**
@@ -172,5 +175,10 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
     @Override
     public View getRootView() {
         return getWindow().getDecorView();
+    }
+
+    @Override
+    public List<CommonNetRequest> getRequestList() {
+        return null;
     }
 }
