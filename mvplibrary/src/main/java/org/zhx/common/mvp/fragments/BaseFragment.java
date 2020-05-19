@@ -17,9 +17,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+
+import com.gyf.barlibrary.ImmersionBar;
 
 import org.zhx.common.mvp.R;
+import org.zhx.common.mvp.api.SimpleImmersionFragment;
 import org.zhx.common.mvp.api.ViewCreatApi;
 import org.zhx.common.mvp.impl.AlphaTitleProxy;
 import org.zhx.common.mvp.widgets.BaseMvpView;
@@ -33,7 +35,7 @@ import java.util.Objects;
  * @date 2017/11/13
  */
 
-public abstract class BaseFragment extends Fragment implements BaseMvpView, ViewCreatApi<Bundle>{
+public abstract class BaseFragment extends SimpleImmersionFragment implements BaseMvpView, ViewCreatApi<Bundle>{
 
     protected DialogApi progressDialog;
     private RelativeLayout rootView;
@@ -99,6 +101,15 @@ public abstract class BaseFragment extends Fragment implements BaseMvpView, View
 
             }
 
+        }
+    }
+
+    @Override
+    public void initImmersionBar() {
+        if (isDarkTitle() || isOldAPI()) {
+            ImmersionBar.with(this).statusBarDarkFont(true,0.2f).keyboardEnable(true).init();
+        } else {
+            ImmersionBar.with(this).keyboardEnable(true).init();
         }
     }
 

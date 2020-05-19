@@ -14,8 +14,11 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.gyf.barlibrary.ImmersionBar;
+
 import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.CommonNetRequest;
 import org.zhx.common.mvp.R;
+import org.zhx.common.mvp.api.SimpleImmersionOwner;
 import org.zhx.common.mvp.api.ViewCreatApi;
 import org.zhx.common.mvp.impl.AlphaTitleProxy;
 import org.zhx.common.mvp.utils.AppUtils;
@@ -34,7 +37,7 @@ import java.util.List;
  * Date: 2020/1/22 10:34
  * Description:
  */
-public abstract class BaseActivity extends AppCompatActivity implements BaseMvpView, ViewCreatApi<Intent> {
+public abstract class BaseActivity extends AppCompatActivity implements BaseMvpView, ViewCreatApi<Intent> , SimpleImmersionOwner {
     private DialogApi mLoading;
     private ViewGroup mContentContainer;
     private ViewGroup mTitleContainer;
@@ -89,6 +92,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
     public final void setContentView(View view) {
         setContentView(R.layout.immersion_bar_layout);
         initTitleView();
+        initImmersionBar();
         if (view != null) {
             Log.e("MainActivity", "!!!!!!!!!!");
             mContentContainer.addView(view);
@@ -126,6 +130,23 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
             }
         });
     }
+    @Override
+    public void initImmersionBar() {
+        if (isDarkTitle() || isOldAPI()) {
+            ImmersionBar.with(this).statusBarDarkFont(true,0.2f).keyboardEnable(true).init();
+        } else {
+            ImmersionBar.with(this).keyboardEnable(true).init();
+        }
+    }
+
+    public boolean isOldAPI() {
+        return Build.VERSION.SDK_INT < Build.VERSION_CODES.M;
+    }
+
+    public boolean isDarkTitle() {
+        return true;
+    }
+
 
     @Override
     public void showToast(int res) {

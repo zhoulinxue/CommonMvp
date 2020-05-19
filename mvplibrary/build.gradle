@@ -40,4 +40,5 @@ dependencies {
     //fastjson
     api 'com.alibaba:fastjson:1.1.71.android'
     api project(path: ':library')
+    api 'com.gyf.immersionbar:immersionbar:2.3.1'
 }
