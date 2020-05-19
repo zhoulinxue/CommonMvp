@@ -20,6 +20,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import org.zhx.common.mvp.R;
+import org.zhx.common.mvp.api.ViewCreatApi;
 import org.zhx.common.mvp.impl.AlphaTitleProxy;
 import org.zhx.common.mvp.widgets.BaseMvpView;
 import org.zhx.common.mvp.widgets.DialogApi;
@@ -32,7 +33,7 @@ import java.util.Objects;
  * @date 2017/11/13
  */
 
-public abstract class BaseFragment extends Fragment implements BaseMvpView {
+public abstract class BaseFragment extends Fragment implements BaseMvpView, ViewCreatApi<Bundle>{
 
     protected DialogApi progressDialog;
     private RelativeLayout rootView;
@@ -59,8 +60,32 @@ public abstract class BaseFragment extends Fragment implements BaseMvpView {
         if (layout != 0) {
             inflater.inflate(layout, mContentContainer);
         }
+        onCreatView();
+        if (getArguments() != null)
+            onLoadArgumentsData(getArguments());
+        if (savedInstanceState != null) {
+            onLoadDataFromSavedInstanceState(savedInstanceState);
+        }
+        onLoadContent();
         return rootView;
     }
+
+    @Override
+    public void onLoadDataFromSavedInstanceState(Bundle savedInstanceState) {
+
+    }
+
+    @Override
+    public void onLoadArgumentsData(@Nullable Bundle data) {
+
+    }
+
+    @Override
+    public final void onCreatView() {
+        onCreateView(getRootView());
+    }
+
+    protected abstract void onCreateView(View rootView);
 
     protected void showLoading(int resID) {
         if (!getParentContext().isFinishing()) {
@@ -121,8 +146,6 @@ public abstract class BaseFragment extends Fragment implements BaseMvpView {
     public void onPause() {
         super.onPause();
     }
-
-    protected abstract int initLayout();
 
     /**
      * 显示输入框
@@ -185,5 +208,10 @@ public abstract class BaseFragment extends Fragment implements BaseMvpView {
         if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.dismissloading();
         }
+    }
+
+    @Override
+    public View getRootView() {
+        return rootView;
     }
 }

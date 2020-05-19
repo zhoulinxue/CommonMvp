@@ -9,9 +9,11 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.zhx.common.mvp.R;
 import org.zhx.common.mvp.api.ViewCreatApi;
 import org.zhx.common.mvp.widgets.BaseMvpView;
 import org.zhx.common.mvp.widgets.DialogApi;
+import org.zhx.common.mvp.widgets.LoadingDialog;
 
 
 /**
@@ -21,7 +23,7 @@ import org.zhx.common.mvp.widgets.DialogApi;
  * Date: 2020/1/22 10:34
  * Description:
  */
-public abstract class BaseActivity extends AppCompatActivity implements BaseMvpView, ViewCreatApi {
+public abstract class BaseActivity extends AppCompatActivity implements BaseMvpView, ViewCreatApi<Intent> {
     private DialogApi mLoading;
 
     @Override
@@ -30,11 +32,11 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
         mLoading = creatLoadingDialog();
         int layout = initLayout();
         if (layout != 0) {
-            View view =getLayoutInflater().inflate(layout,null);
+            View view = getLayoutInflater().inflate(layout, null);
             setContentView(view);
         }
         if (getIntent() != null)
-            onLoadIntentData(getIntent());
+            onLoadArgumentsData(getIntent());
         onCreatView();
         if (savedInstanceState != null)
             onLoadDataFromSavedInstanceState(savedInstanceState);
@@ -42,14 +44,14 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
     }
 
     @Override
-    public void onLoadIntentData(Intent intent) {
+    public void onLoadArgumentsData(Intent data) {
 
     }
 
     @Override
     protected final void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        onLoadIntentData(intent);
+        onLoadArgumentsData(intent);
     }
 
 
@@ -103,4 +105,13 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
         return this;
     }
 
+    @Override
+    public DialogApi creatLoadingDialog() {
+        return new LoadingDialog(this, R.string.loading_default_text);
+    }
+
+    @Override
+    public View getRootView() {
+        return getWindow().getDecorView();
+    }
 }

@@ -1,11 +1,17 @@
 package org.zhx.common.mvp.impl;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import androidx.annotation.DrawableRes;
+import androidx.annotation.StringRes;
 
 import org.zhx.common.mvp.R;
 import org.zhx.common.mvp.api.AlphaTitle;
@@ -22,6 +28,10 @@ public class AlphaTitleProxy implements AlphaTitle {
     private int mStatusHeight = 0;
     private int mTitleHeight = 0;
     private int mDefaultHeight = 0;
+    private Context mContext;
+    private View.OnClickListener mLisenter;
+    private ImageView mBackImg;
+    private TextView mTextOptionTv;
 
     public AlphaTitleProxy(ViewGroup mContentContainer, ViewGroup mTitleContainer) {
         this.mContentContainer = mContentContainer;
@@ -29,6 +39,7 @@ public class AlphaTitleProxy implements AlphaTitle {
         mStatusHeight = StatuBarUtil.getStatusBarHeight(mContentContainer.getContext());
         mTitleHeight = StatuBarUtil.getTitlebarHeight(mContentContainer.getContext());
         mDefaultHeight = mStatusHeight + mTitleHeight;
+        this.mContext = mTitleContainer.getContext();
     }
 
     @Override
@@ -44,7 +55,7 @@ public class AlphaTitleProxy implements AlphaTitle {
     }
 
 
-    public void setContentViewBelowTitleBar(Context context, boolean isBelow) {
+    public void setContentViewBelowTitleBar(boolean isBelow) {
         RelativeLayout.LayoutParams titleRela = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         if (isBelow) {
             titleRela.addRule(RelativeLayout.BELOW, R.id.title_container);
@@ -68,6 +79,67 @@ public class AlphaTitleProxy implements AlphaTitle {
             initCoustomTitleBar(LayoutInflater.from(mContentContainer.getContext()).inflate(layout, null), height);
     }
 
+    @Override
+    public void setCommonTitle(String title) {
+        setCoustomTitleView(R.layout.common_title_layout);
+        setTitle(title);
+        setTitleClickListener(null);
+    }
+
+    @Override
+    public void setTitleClickListener(View.OnClickListener clickListener) {
+        this.mLisenter = clickListener;
+        mBackImg = mTitleContainer.findViewById(R.id.back_img);
+        mTextOptionTv = mTitleContainer.findViewById(R.id.option_tv);
+        if (clickListener != null) {
+            mBackImg.setOnClickListener(clickListener);
+            mTextOptionTv.setOnClickListener(clickListener);
+        } else {
+            mBackImg.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mContext instanceof Activity) {
+                        ((Activity) mContext).finish();
+                    }
+                }
+            });
+        }
+    }
+
+    @Override
+    public void showTextOption(boolean showTextOption, String src) {
+        if (mTitleContainer != null) {
+            TextView option = mTitleContainer.findViewById(R.id.option_tv);
+            if (option != null) {
+                option.setVisibility(showTextOption ? View.VISIBLE : View.GONE);
+                option.setText(src);
+            }
+        }
+    }
+
+    @Override
+    public void setTextOptionBg(@DrawableRes int bg_save) {
+        if (mTitleContainer != null) {
+            TextView option = mTitleContainer.findViewById(R.id.option_tv);
+            if (option != null) {
+                option.setBackgroundResource(bg_save);
+            }
+        }
+    }
+
+    public void showTextOption(boolean showTextOption, @StringRes int src) {
+        showTextOption(showTextOption, mContext.getString(src));
+    }
+
+    private void setTitle(String title) {
+        TextView textView = mTitleContainer.findViewById(R.id.title_tv);
+        textView.setText(title);
+    }
+
+    public void setCommonTitle(@StringRes int src) {
+        setCommonTitle(mContext.getResources().getString(src));
+    }
+
 
     @Override
     public void onScroll(float alpha) {
@@ -86,8 +158,15 @@ public class AlphaTitleProxy implements AlphaTitle {
 
 
     public void setCoustomTitleBarBackgroundColor(Context context, int color) {
+        this.mContext = context;
         if (mTitleContainer != null) {
             mTitleContainer.setBackgroundColor(context.getResources().getColor(color));
+        }
+    }
+
+    public void setCoustomTitleBarBackgroundSrc(@DrawableRes int src) {
+        if (mTitleContainer != null) {
+            mTitleContainer.setBackgroundResource(src);
         }
     }
 

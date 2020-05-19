@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 
 import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.CommonNetRequest;
 import org.zhx.common.mvp.BasePresenter;
+import org.zhx.common.mvp.api.PresenterApi;
 import org.zhx.common.mvp.widgets.DialogApi;
 import org.zhx.common.mvp.widgets.LoadingDialog;
 
@@ -19,16 +20,14 @@ import java.util.List;
  * Date: 2020/1/22 11:28
  * Description:
  */
-public abstract class MvpActivity<T extends BasePresenter> extends BaseActivity {
+public abstract class MvpActivity<T extends BasePresenter> extends BaseActivity implements PresenterApi<T> {
     protected T mPresenter;
 
     @Override
-    protected  void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         mPresenter = initPresenter();
         super.onCreate(savedInstanceState);
     }
-
-    protected abstract T initPresenter();
 
     @Override
     public DialogApi creatLoadingDialog() {
@@ -38,5 +37,13 @@ public abstract class MvpActivity<T extends BasePresenter> extends BaseActivity 
     @Override
     public List<CommonNetRequest> getRequestList() {
         return mPresenter != null ? mPresenter.getRequests() : new ArrayList<CommonNetRequest>();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mPresenter != null) {
+            mPresenter.onDestory();
+        }
     }
 }

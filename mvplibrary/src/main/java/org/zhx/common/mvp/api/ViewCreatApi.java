@@ -2,13 +2,14 @@ package org.zhx.common.mvp.api;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 /**
  * pakage :com.gaea.kiki.mvp
  * auther :zx
  * creatTime: 2019/6/28
  */
-public interface ViewCreatApi {
+public interface ViewCreatApi<T> {
     /**
      * 初始化布局
      *
@@ -19,9 +20,9 @@ public interface ViewCreatApi {
     /**
      * 获取传递参数
      *
-     * @param intent
+     * @param data
      */
-    public  void onLoadIntentData(Intent intent);
+    public  void onLoadArgumentsData(T data);
 
     /**
      * 从 savedInstanceState 中获取 数据
@@ -40,5 +41,9 @@ public interface ViewCreatApi {
      */
     public  void onLoadContent();
 
-
+    /**
+     *
+     * @return
+     */
+    public View getRootView();
 }

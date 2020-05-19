@@ -1,7 +1,8 @@
 package org.zhx.common.mvp.api;
 
-import android.content.Context;
 import android.view.View;
+
+import androidx.annotation.DrawableRes;
 
 /**
  * pakage :com.gaea.kiki.api
@@ -15,9 +16,17 @@ public interface AlphaTitle {
 
     public void initCoustomTitleBar(View view, int height);
 
-    public void setContentViewBelowTitleBar(Context context, boolean isBelow);
+    public void setContentViewBelowTitleBar(boolean isBelow);
 
     public void setCoustomTitleView(int layout);
 
     public void setCoustomTitleView(int layout, int height);
+
+    public void setCommonTitle(String title);
+
+    public void setTitleClickListener(View.OnClickListener clickListener);
+
+    void showTextOption(boolean showTextOption, String text);
+
+    void setTextOptionBg(@DrawableRes int bg_save);
 }
