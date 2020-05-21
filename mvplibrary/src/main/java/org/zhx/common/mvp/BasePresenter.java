@@ -5,6 +5,7 @@ import android.util.Log;
 
 import org.zhx.common.commonnetwork.HttpManager;
 import org.zhx.common.commonnetwork.OkHttpFactory;
+import org.zhx.common.commonnetwork.commonokhttp.HeaderInterceptor;
 import org.zhx.common.commonnetwork.commonokhttp.OkConfig;
 import org.zhx.common.commonnetwork.commonokhttp.OkConfigBuilder;
 import org.zhx.common.commonnetwork.commonokhttp.customObservable.CommonCallAdapterFactory;
@@ -66,12 +67,22 @@ public abstract class BasePresenter<V extends BaseMvpView> {
                 .setConverterFactory(FastJsonConverterFactory.create())
                 .setHttps(true)
                 .build();
+        Interceptor interceptor=null;
         if(HttpManager.DEFAULT_TAG.equals(tag)){
-            config.setOkInterceptor(creatHeaderIntercepor());
+            interceptor=creatHeaderIntercepor();
         }else {
-            config.setOkInterceptor(creatHeaderIntercepor(tag));
+            interceptor=creatHeaderIntercepor(tag);
+        }
+        if(interceptor==null){
+            config.setInterceptor(creatCommonHeader(tag));
+        }else {
+            config.setOkInterceptor(interceptor);
         }
         return config;
+    }
+
+    private HeaderInterceptor creatCommonHeader(String tag) {
+        return null;
     }
 
     protected Interceptor creatHeaderIntercepor() {
