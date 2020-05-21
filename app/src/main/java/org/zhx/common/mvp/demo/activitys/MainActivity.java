@@ -9,12 +9,13 @@ import org.zhx.common.mvp.demo.R;
 import org.zhx.common.mvp.demo.bean.WeatherInfo;
 import org.zhx.common.mvp.demo.mvp.presenters.WeatherPresenter;
 import org.zhx.common.mvp.demo.mvp.models.WeatherApi;
+import org.zhx.common.mvp.widgets.DialogApi;
 
 public class MainActivity extends MvpActivity<WeatherPresenter> implements WeatherApi.view {
     private TextView mTextView;
 
     @Override
-    protected WeatherPresenter initPresenter() {
+    public WeatherPresenter initPresenter() {
         //TODO  初始化  presenter
         return new WeatherPresenter(this);
     }
@@ -26,7 +27,7 @@ public class MainActivity extends MvpActivity<WeatherPresenter> implements Weath
     }
 
     @Override
-    public void onLoadIntentData(Intent intent) {
+    public void onLoadArgumentsData(Intent intent) {
         //TODO  获取传递过来的参数
 
     }
@@ -44,6 +45,11 @@ public class MainActivity extends MvpActivity<WeatherPresenter> implements Weath
     }
 
     @Override
+    public void initImmersionBar() {
+        super.initImmersionBar();
+    }
+
+    @Override
     public void onLoadContent() {
         //TODO 在这个位置 获取 网络 数据
         mPresenter.getWeatherInfo();
@@ -53,5 +59,10 @@ public class MainActivity extends MvpActivity<WeatherPresenter> implements Weath
     public void onWeatherInfo(WeatherInfo info) {
         //TODO 天气信息 (mPresenter.getWeatherInfo()  接口回调)
         mTextView.setText(info.toString());
+    }
+
+    @Override
+    public DialogApi creatLoadingDialog() {
+        return null;
     }
 }

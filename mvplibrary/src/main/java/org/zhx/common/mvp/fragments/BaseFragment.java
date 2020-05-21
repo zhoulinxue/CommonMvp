@@ -1,7 +1,6 @@
 package org.zhx.common.mvp.fragments;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -26,16 +25,13 @@ import org.zhx.common.mvp.api.ViewCreatApi;
 import org.zhx.common.mvp.impl.AlphaTitleProxy;
 import org.zhx.common.mvp.widgets.BaseMvpView;
 import org.zhx.common.mvp.widgets.DialogApi;
-import org.zhx.common.mvp.widgets.LoadingDialog;
-
-import java.util.Objects;
 
 /**
  * @author LongpingZou
  * @date 2017/11/13
  */
 
-public abstract class BaseFragment extends SimpleImmersionFragment implements BaseMvpView, ViewCreatApi<Bundle>{
+public abstract class BaseFragment extends SimpleImmersionFragment implements BaseMvpView, ViewCreatApi<Bundle> {
 
     protected DialogApi progressDialog;
     private RelativeLayout rootView;
@@ -44,10 +40,6 @@ public abstract class BaseFragment extends SimpleImmersionFragment implements Ba
     protected AlphaTitleProxy mTitleProxy;
     protected Handler mHandler;
     protected Context mContext;
-
-    public Activity getParentContext() {
-        return Objects.requireNonNull(getActivity());
-    }
 
     @Nullable
     @Override
@@ -62,9 +54,10 @@ public abstract class BaseFragment extends SimpleImmersionFragment implements Ba
         if (layout != 0) {
             inflater.inflate(layout, mContentContainer);
         }
-        onCreatView();
-        if (getArguments() != null)
+        if (getArguments() != null) {
             onLoadArgumentsData(getArguments());
+        }
+        onCreatView();
         if (savedInstanceState != null) {
             onLoadDataFromSavedInstanceState(savedInstanceState);
         }
@@ -90,13 +83,16 @@ public abstract class BaseFragment extends SimpleImmersionFragment implements Ba
     protected abstract void onCreateView(View rootView);
 
     protected void showLoading(int resID) {
-        if (!getParentContext().isFinishing()) {
+        if (getActivity() != null && !getActivity().isFinishing()) {
             if (progressDialog != null) {
                 progressDialog.dismissloading();
             }
-            progressDialog = new LoadingDialog(getParentContext(), getResources().getString(resID));
+            progressDialog = creatLoadingDialog();
+            if (progressDialog == null) {
+                return;
+            }
             try {
-                ((LoadingDialog) progressDialog).show();
+                progressDialog.showLoading();
             } catch (Exception ignored) {
 
             }
@@ -107,7 +103,7 @@ public abstract class BaseFragment extends SimpleImmersionFragment implements Ba
     @Override
     public void initImmersionBar() {
         if (isDarkTitle() || isOldAPI()) {
-            ImmersionBar.with(this).statusBarDarkFont(true,0.2f).keyboardEnable(true).init();
+            ImmersionBar.with(this).statusBarDarkFont(true, 0.2f).keyboardEnable(true).init();
         } else {
             ImmersionBar.with(this).keyboardEnable(true).init();
         }
@@ -115,7 +111,7 @@ public abstract class BaseFragment extends SimpleImmersionFragment implements Ba
 
     protected void dismissLoading() {
         if (progressDialog != null) {
-            new Handler(getParentContext().getMainLooper()).postDelayed(new Runnable() {
+            mHandler.post(new Runnable() {
                 @Override
                 public void run() {
                     //execute the task
@@ -124,7 +120,7 @@ public abstract class BaseFragment extends SimpleImmersionFragment implements Ba
                     }
 
                 }
-            }, 0);
+            });
 
         }
     }
@@ -179,7 +175,7 @@ public abstract class BaseFragment extends SimpleImmersionFragment implements Ba
 
     @Override
     public void showLoadingDialog() {
-        showLoadingDialog(R.string.loading_default_text);
+        showLoadingDialog(R.string.common_loading_text);
     }
 
     @Override
@@ -189,16 +185,13 @@ public abstract class BaseFragment extends SimpleImmersionFragment implements Ba
     }
 
     @Override
-    public DialogApi creatLoadingDialog() {
-        return new LoadingDialog(mContext, getResources()
-                .getString(R.string.loading_default_text));
-    }
-
-    @Override
     public void showLoadingDialog(int resId) {
         try {
             if (progressDialog == null) {
-                progressDialog = new LoadingDialog(mContext);
+                progressDialog = creatLoadingDialog();
+                if (progressDialog == null) {
+                    return;
+                }
             }
             progressDialog.setMessage(getResources().getString(resId));
             if (!progressDialog.isShowing())

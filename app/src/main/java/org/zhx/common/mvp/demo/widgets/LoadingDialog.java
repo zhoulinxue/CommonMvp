@@ -43,10 +43,10 @@ public class LoadingDialog extends Dialog implements DialogApi {
     }
 
     private void initView() {
-        this.setContentView(R.layout.layout_loading);
+        this.setContentView(R.layout.common_layout_loading);
         this.getWindow().getAttributes().gravity = Gravity.CENTER;
         this.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        tvMsg = this.findViewById(R.id.loading_tv);
+        tvMsg = this.findViewById(R.id.commone_loading_tv);
         setCanceledOnTouchOutside(false);
     }
 

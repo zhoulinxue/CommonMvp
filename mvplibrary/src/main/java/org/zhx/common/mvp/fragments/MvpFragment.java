@@ -1,4 +1,4 @@
-package org.zhx.common.mvp.activitys;
+package org.zhx.common.mvp.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

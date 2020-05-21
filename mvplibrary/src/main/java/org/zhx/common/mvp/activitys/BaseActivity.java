@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.ColorRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -37,7 +38,7 @@ import java.util.List;
  * Date: 2020/1/22 10:34
  * Description:
  */
-public abstract class BaseActivity extends AppCompatActivity implements BaseMvpView, ViewCreatApi<Intent> , SimpleImmersionOwner {
+public abstract class BaseActivity extends AppCompatActivity implements BaseMvpView, ViewCreatApi<Intent>, SimpleImmersionOwner {
     private DialogApi mLoading;
     private ViewGroup mContentContainer;
     private ViewGroup mTitleContainer;
@@ -88,11 +89,14 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
             }
         });
     }
+
+
     @Override
     public final void setContentView(View view) {
         setContentView(R.layout.immersion_bar_layout);
         initTitleView();
-        initImmersionBar();
+        if (immersionBarEnabled())
+            initImmersionBar();
         if (view != null) {
             Log.e("MainActivity", "!!!!!!!!!!");
             mContentContainer.addView(view);
@@ -108,6 +112,15 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
         mBgImg = findViewById(R.id.bg_imagView);
         mRootView = findViewById(R.id.root_layout);
     }
+
+    public void showTitleDivider(){
+        mTitleDivider.setVisibility(View.VISIBLE);
+    }
+
+    public void setTitleDividerColor(@ColorRes int color){
+        mTitleDivider.setBackgroundColor(getResources().getColor(color));
+    }
+
 
     @Override
     public void onLoadArgumentsData(Intent data) {
@@ -130,10 +143,16 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
             }
         });
     }
+
+    @Override
+    public DialogApi creatLoadingDialog() {
+        return new LoadingDialog(this,R.string.common_loading_text);
+    }
+
     @Override
     public void initImmersionBar() {
         if (isDarkTitle() || isOldAPI()) {
-            ImmersionBar.with(this).statusBarDarkFont(true,0.2f).keyboardEnable(true).init();
+            ImmersionBar.with(this).statusBarDarkFont(true, 0.2f).keyboardEnable(true).init();
         } else {
             ImmersionBar.with(this).keyboardEnable(true).init();
         }
@@ -189,11 +208,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
     }
 
     @Override
-    public DialogApi creatLoadingDialog() {
-        return new LoadingDialog(this, R.string.loading_default_text);
-    }
-
-    @Override
     public View getRootView() {
         return getWindow().getDecorView();
     }
@@ -201,5 +215,10 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
     @Override
     public List<CommonNetRequest> getRequestList() {
         return null;
+    }
+
+    @Override
+    public boolean immersionBarEnabled() {
+        return true;
     }
 }

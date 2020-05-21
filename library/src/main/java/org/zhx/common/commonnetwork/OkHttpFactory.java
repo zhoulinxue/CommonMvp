@@ -80,7 +80,7 @@ public class OkHttpFactory {
                 Log.e(TAG, message);
             }
         });
-        logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        logInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
         Interceptor interceptor = config.getOkInterceptor() == null ? new Interceptor() {
             @Override
             public Response intercept(Chain chain) throws IOException {

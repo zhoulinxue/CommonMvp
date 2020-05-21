@@ -4,8 +4,10 @@ package org.zhx.common.mvp;
 import android.util.Log;
 
 import org.zhx.common.commonnetwork.commonokhttp.NetWorkUtil;
+import org.zhx.common.commonnetwork.commonokhttp.RxJavaUtil;
 import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.CommonLocalError;
 import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.CommonNetRequestCallBack;
+import org.zhx.common.mvp.utils.CommonFileCacheUtil;
 import org.zhx.common.mvp.widgets.BaseMvpView;
 
 /**
@@ -15,8 +17,9 @@ import org.zhx.common.mvp.widgets.BaseMvpView;
  */
 abstract class NetRequstAdapter<R, T> implements CommonNetRequestCallBack<R, T> {
     protected BaseMvpView mvpView;
-    private boolean isShowToast = false;
+    private boolean isShowToast = true;
     private boolean isDismissDialog = true;
+    private String sharkeKey = "common_NetWork_shake";
 
     public NetRequstAdapter(BaseMvpView mvpView, boolean isShowToast) {
         this(mvpView);
@@ -36,11 +39,6 @@ abstract class NetRequstAdapter<R, T> implements CommonNetRequestCallBack<R, T> 
 
     public NetRequstAdapter(BaseMvpView mvpView) {
         this.mvpView = mvpView;
-        if (isShowToast) {
-            if (NetWorkUtil.checkNetWorkStatus(mvpView.getContext())) {
-                onError("-1", CommonLocalError.BAD_NETWORK.getErrorMsg());
-            }
-        }
     }
 
     @Override
@@ -54,6 +52,16 @@ abstract class NetRequstAdapter<R, T> implements CommonNetRequestCallBack<R, T> 
     public void onError(String responseCode, String msg) {
         Log.e("OkHttpRequest", "onError..NetRequstAdapter...");
         if (mvpView != null) {
+            long time = CommonFileCacheUtil.shake(mvpView.getContext(), sharkeKey, 0);
+            synchronized (NetRequstAdapter.class) {
+                if (!NetWorkUtil.checkNetWorkStatus(mvpView.getContext())) {
+                    if (System.currentTimeMillis() - time > 5000) {
+                        CommonFileCacheUtil.save(mvpView.getContext(), sharkeKey, System.currentTimeMillis());
+                        mvpView.onError("-1", CommonLocalError.BAD_NETWORK.getErrorMsg());
+                    }
+                    return;
+                }
+            }
             mvpView.onError(responseCode + "", msg);
         }
     }

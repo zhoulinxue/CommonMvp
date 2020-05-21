@@ -10,7 +10,7 @@
         android:layout_height="@dimen/y44"
         android:layout_centerVertical="true"
         android:scaleType="centerInside"
-        android:src="@mipmap/icon_back" />
+        android:src="@drawable/icon_black_back" />
 
     <TextView
         android:id="@+id/title_tv"
@@ -33,7 +33,6 @@
         android:paddingRight="@dimen/x5"
         android:paddingTop="@dimen/y2"
         android:paddingBottom="@dimen/y2"
-        android:background="@drawable/bg_save"
         android:layout_marginRight="@dimen/x10"
         android:textSize="@dimen/sp_14"
         android:visibility="gone"/>

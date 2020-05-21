@@ -3,6 +3,7 @@ package org.zhx.common.mvp.widgets;
 import android.app.Dialog;
 import android.content.Context;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.TextView;
 
 import org.zhx.common.mvp.R;
@@ -34,15 +35,16 @@ public class LoadingDialog extends Dialog implements DialogApi {
 
     public LoadingDialog(Context context, int theme, String strMessage) {
         super(context, theme);
-        this.message=strMessage;
-       initView();
+        this.message = strMessage;
+        initView();
     }
 
     private void initView() {
-        this.setContentView(R.layout.layout_loading);
+        View view = getLayoutInflater().inflate(R.layout.common_layout_loading, null);
+        this.setContentView(view);
         this.getWindow().getAttributes().gravity = Gravity.CENTER;
         this.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        tvMsg = this.findViewById(R.id.loading_tv);
+        tvMsg = view.findViewById(R.id.commone_loading_tv);
         if (tvMsg != null) {
             tvMsg.setText(message);
         }

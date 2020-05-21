@@ -8,7 +8,6 @@ import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.CommonNetR
 import org.zhx.common.mvp.BasePresenter;
 import org.zhx.common.mvp.api.PresenterApi;
 import org.zhx.common.mvp.widgets.DialogApi;
-import org.zhx.common.mvp.widgets.LoadingDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,14 +23,9 @@ public abstract class MvpActivity<T extends BasePresenter> extends BaseActivity 
     protected T mPresenter;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected final void onCreate(@Nullable Bundle savedInstanceState) {
         mPresenter = initPresenter();
         super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public DialogApi creatLoadingDialog() {
-        return new LoadingDialog(this);
     }
 
     @Override

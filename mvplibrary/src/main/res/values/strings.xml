@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">MvpLibrary</string>
-    <string name="loading_default_text">正在加载...</string>
+    <string name="common_loading_text">正在加载...</string>
 </resources>
