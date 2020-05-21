@@ -34,7 +34,6 @@ public abstract class BasePresenter<V extends BaseMvpView> {
     protected int mTotalPage = 0;
     protected boolean hasMore;
     protected HttpManager manager;
-    private OkHttpFactory factory;
     protected List<CommonNetRequest> mRequests = new ArrayList<>();
 
     public BasePresenter(V view) {
@@ -49,11 +48,6 @@ public abstract class BasePresenter<V extends BaseMvpView> {
         manager = HttpManager.getInstance();
         OkConfig config = onCreatHttpCofig();
         manager.initFactoryByTag(config);
-        factory = creatNewFactory();
-    }
-
-    protected OkHttpFactory creatNewFactory() {
-        return manager.getDefaultFactory();
     }
 
     /**
