@@ -14,7 +14,7 @@ public class MainActivity extends MvpActivity<WeatherPresenter> implements Weath
     private TextView mTextView;
 
     @Override
-    protected WeatherPresenter initPresenter() {
+    public WeatherPresenter initPresenter() {
         //TODO  初始化  presenter
         return new WeatherPresenter(this);
     }
@@ -26,7 +26,7 @@ public class MainActivity extends MvpActivity<WeatherPresenter> implements Weath
     }
 
     @Override
-    public void onLoadIntentData(Intent intent) {
+    public void onLoadArgumentsData(Intent intent) {
         //TODO  获取传递过来的参数
 
     }
