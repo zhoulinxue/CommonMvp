@@ -1,9 +1,11 @@
 package org.zhx.common.mvp;
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import org.zhx.common.commonnetwork.HttpManager;
 import org.zhx.common.commonnetwork.OkHttpFactory;
+import org.zhx.common.commonnetwork.commonokhttp.HeaderInterceptor;
 import org.zhx.common.commonnetwork.commonokhttp.OkConfig;
 import org.zhx.common.commonnetwork.commonokhttp.OkConfigBuilder;
 import org.zhx.common.commonnetwork.commonokhttp.customObservable.CommonCallAdapterFactory;
@@ -33,13 +35,7 @@ public abstract class BasePresenter<V extends BaseMvpView> {
     protected int mTotalPage = 0;
     protected boolean hasMore;
     protected HttpManager manager;
-    private boolean isNewBuilder = false;
-    private OkHttpFactory factory;
     protected List<CommonNetRequest> mRequests = new ArrayList<>();
-
-    public boolean isNewBuilder() {
-        return isNewBuilder;
-    }
 
     public BasePresenter(V view) {
         this.mView = view;
@@ -51,14 +47,8 @@ public abstract class BasePresenter<V extends BaseMvpView> {
      */
     private void creatNewHttpManager() {
         manager = HttpManager.getInstance();
-        manager.setDefaultTag(BasePresenter.class);
         OkConfig config = onCreatHttpCofig();
         manager.initFactoryByTag(config);
-        factory = creatNewFactory();
-    }
-
-    protected OkHttpFactory creatNewFactory() {
-        return manager.getDefaultFactory();
     }
 
     /**
@@ -67,21 +57,41 @@ public abstract class BasePresenter<V extends BaseMvpView> {
      * @return
      */
     protected OkConfig onCreatHttpCofig() {
-        OkConfig config = new OkConfigBuilder(BasePresenter.class)
+        OkConfig config =creatNewConfigByTag(HttpManager.DEFAULT_TAG);
+        return config;
+    }
+
+    protected OkConfig creatNewConfigByTag(String tag) {
+        OkConfig config = new OkConfigBuilder(tag)
                 .setCallFactory(CommonCallAdapterFactory.create())
                 .setConverterFactory(FastJsonConverterFactory.create())
                 .setHttps(true)
                 .build();
-        if (config.getInterceptor() == null)
-            config.setOkInterceptor(creatHeaderIntercepor());
+        Interceptor interceptor=null;
+        if(HttpManager.DEFAULT_TAG.equals(tag)){
+            interceptor=creatHeaderIntercepor();
+        }else {
+            interceptor=creatHeaderIntercepor(tag);
+        }
+        if(interceptor==null){
+            config.setInterceptor(creatCommonHeader(tag));
+        }else {
+            config.setOkInterceptor(interceptor);
+        }
         return config;
+    }
+
+    private HeaderInterceptor creatCommonHeader(String tag) {
+        return null;
     }
 
     protected Interceptor creatHeaderIntercepor() {
         return null;
     }
+    protected Interceptor creatHeaderIntercepor(String tag) {
+        return null;
+    }
 
-    ;
 
     /**
      * 字符串数组 转 map
@@ -105,6 +115,29 @@ public abstract class BasePresenter<V extends BaseMvpView> {
         }
         return map;
     }
+    /**
+     * 字符串数组 转 map
+     *
+     * @param params
+     * @return
+     */
+    protected Map<String, Object> genrateMap(Object... params) {
+        Map<String, Object> map = new HashMap<>();
+        if (params.length >= 2) {
+            if (params.length % 2 == 0) {
+                for (int i = 0; i < params.length; i++) {
+                    if (i % 2 == 0) {
+                        if (!"null".equals(params[i + 1])&&params[i+1]!=null)
+                            map.put(params[i]+"", params[i + 1]);
+                    }
+                }
+            } else {
+                Log.e("httpManager", "ApiManager" + "param ....key...value  error");
+            }
+        }
+        return map;
+    }
+
 
     /**
      * 取消所有回调
@@ -153,5 +186,9 @@ public abstract class BasePresenter<V extends BaseMvpView> {
 
     public void setHasMore(boolean hasMore) {
         this.hasMore = hasMore;
+    }
+
+    public boolean hasMore() {
+        return hasMore;
     }
 }
