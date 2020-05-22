@@ -58,12 +58,17 @@ public abstract class BaseFragment extends SimpleImmersionFragment implements Ba
         if (getArguments() != null) {
             onLoadArgumentsData(getArguments());
         }
+        return rootView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         onCreatView();
         if (savedInstanceState != null) {
             onLoadDataFromSavedInstanceState(savedInstanceState);
         }
         onLoadContent();
-        return rootView;
     }
 
     @Override
@@ -210,7 +215,7 @@ public abstract class BaseFragment extends SimpleImmersionFragment implements Ba
 
     @Override
     public DialogApi creatLoadingDialog() {
-        return new LoadingDialog(getActivity(),R.string.common_loading_text);
+        return new LoadingDialog(getActivity(), R.string.common_loading_text);
     }
 
     @Override
