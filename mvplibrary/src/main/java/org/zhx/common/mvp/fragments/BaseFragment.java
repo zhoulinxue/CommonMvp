@@ -25,6 +25,7 @@ import org.zhx.common.mvp.api.ViewCreatApi;
 import org.zhx.common.mvp.impl.AlphaTitleProxy;
 import org.zhx.common.mvp.widgets.BaseMvpView;
 import org.zhx.common.mvp.widgets.DialogApi;
+import org.zhx.common.mvp.widgets.LoadingDialog;
 
 /**
  * @author LongpingZou
@@ -205,6 +206,11 @@ public abstract class BaseFragment extends SimpleImmersionFragment implements Ba
     @Override
     public void onError(String code, String msg) {
         showToast(msg);
+    }
+
+    @Override
+    public DialogApi creatLoadingDialog() {
+        return new LoadingDialog(getActivity(),R.string.common_loading_text);
     }
 
     @Override

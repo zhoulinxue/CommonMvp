@@ -1,2 +1,2 @@
-include ':app', ':mvplibrary', ':library'
+include ':app', ':mvplibrary'
 rootProject.name='CommonMvp'

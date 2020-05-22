@@ -5,7 +5,7 @@ publish {
     userOrg = 'zhx'//bintray.com用户名
     groupId = 'org.zhx.common'//jcenter上的路径,bintray上创建Package时填写的Version control项
     artifactId = 'commonMvp'//项目名称，bintray上创建Package时填写的Name项
-    publishVersion = '1.4.2'//版本号
+    publishVersion = '1.4.5'//版本号
     desc = 'easy mvp'//描述，不重要
     website = 'https://github.com/zhoulinxue/CommonMvp.git'//网站，
 }
@@ -37,8 +37,16 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    //okhttp-------------------------
+    api rootProject.ext.okhttp3
+    api rootProject.ext.okhttpLog
+    api rootProject.ext.retrofit
+    api rootProject.ext.rxjava
+    api rootProject.ext.retrofitAdapter
+    api rootProject.ext.rxAndroid
+    api rootProject.ext.appCompat
+    //------------------------------
     //fastjson
     api 'com.alibaba:fastjson:1.1.71.android'
-    api project(path: ':library')
     api 'com.gyf.immersionbar:immersionbar:2.3.1'
 }

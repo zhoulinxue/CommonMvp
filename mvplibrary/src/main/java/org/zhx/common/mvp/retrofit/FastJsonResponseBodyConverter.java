@@ -1,13 +1,11 @@
 package org.zhx.common.mvp.retrofit;
 
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.parser.Feature;
 import com.alibaba.fastjson.parser.ParserConfig;
 
-import org.zhx.common.mvp.BaseBean;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
