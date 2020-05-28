@@ -8,6 +8,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -47,9 +48,14 @@ public class AppUtils {
 
     }
 
+    public static boolean isDarkMode(Context context) {
+        int mode = context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        return mode == Configuration.UI_MODE_NIGHT_YES;
+    }
 
     /**
      * 获取版本名称，如1.0.0
+     *
      * @param context
      * @return
      */
@@ -79,6 +85,7 @@ public class AppUtils {
 
     /**
      * 获取版本code
+     *
      * @param context
      * @return
      */
@@ -107,6 +114,7 @@ public class AppUtils {
 
     /**
      * 获取应用包名
+     *
      * @param context
      * @return
      */
@@ -175,7 +183,7 @@ public class AppUtils {
     /**
      * 获取手机型号
      *
-     * @return  手机型号
+     * @return 手机型号
      */
     public static String getSystemModel() {
         return android.os.Build.MODEL;

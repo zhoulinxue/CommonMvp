@@ -1,8 +1,8 @@
-package org.zhx.common.mvp.utils;
+package org.zhx.common.mvp.uikit.utils;
 
 import android.content.Context;
 
-import org.zhx.common.mvp.R;
+import org.zhx.common.mvp.uikit.R;
 
 import java.lang.reflect.Field;
 

@@ -6,7 +6,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 
-import org.zhx.common.mvp.R;
+import org.zhx.common.mvp.uikit.R;
 import org.zhx.common.mvp.widgets.DialogApi;
 
 

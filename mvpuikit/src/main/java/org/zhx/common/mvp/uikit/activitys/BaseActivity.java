@@ -18,12 +18,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.gyf.barlibrary.ImmersionBar;
 
 import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.CommonNetRequest;
-import org.zhx.common.mvp.R;
+import org.zhx.common.mvp.uikit.R;
+import org.zhx.common.mvp.uikit.impl.AlphaTitleProxy;
 import org.zhx.common.mvp.widgets.BaseMvpView;
 import org.zhx.common.mvp.widgets.DialogApi;
 import org.zhx.common.mvp.api.SimpleImmersionOwner;
 import org.zhx.common.mvp.api.ViewCreatApi;
-import org.zhx.common.mvp.impl.AlphaTitleProxy;
 import org.zhx.common.mvp.uikit.widgets.LoadingDialog;
 import org.zhx.common.mvp.utils.AppUtils;
 import org.zhx.common.mvp.utils.InputMethodUtils;
@@ -113,11 +113,11 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
         mRootView = findViewById(R.id.root_layout);
     }
 
-    public void showTitleDivider(){
+    public void showTitleDivider() {
         mTitleDivider.setVisibility(View.VISIBLE);
     }
 
-    public void setTitleDividerColor(@ColorRes int color){
+    public void setTitleDividerColor(@ColorRes int color) {
         mTitleDivider.setBackgroundColor(getResources().getColor(color));
     }
 
@@ -146,7 +146,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
 
     @Override
     public DialogApi creatLoadingDialog() {
-        return new LoadingDialog(this,R.string.common_loading_text);
+        return new LoadingDialog(this, R.string.common_loading_text);
     }
 
     @Override
@@ -163,7 +163,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
     }
 
     public boolean isDarkTitle() {
-        return true;
+        return AppUtils.isDarkMode(this);
     }
 
 

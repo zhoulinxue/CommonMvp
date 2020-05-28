@@ -19,12 +19,12 @@ import androidx.annotation.Nullable;
 
 import com.gyf.barlibrary.ImmersionBar;
 
-import org.zhx.common.mvp.R;
+import org.zhx.common.mvp.uikit.R;
+import org.zhx.common.mvp.uikit.impl.AlphaTitleProxy;
 import org.zhx.common.mvp.widgets.BaseMvpView;
 import org.zhx.common.mvp.widgets.DialogApi;
 import org.zhx.common.mvp.api.SimpleImmersionFragment;
 import org.zhx.common.mvp.api.ViewCreatApi;
-import org.zhx.common.mvp.impl.AlphaTitleProxy;
 import org.zhx.common.mvp.uikit.widgets.LoadingDialog;
 
 
