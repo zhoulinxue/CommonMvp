@@ -1,17 +1,15 @@
 package org.zhx.common.mvp;
 
-import android.text.TextUtils;
 import android.util.Log;
 
 import org.zhx.common.commonnetwork.HttpManager;
-import org.zhx.common.commonnetwork.OkHttpFactory;
 import org.zhx.common.commonnetwork.commonokhttp.HeaderInterceptor;
 import org.zhx.common.commonnetwork.commonokhttp.OkConfig;
 import org.zhx.common.commonnetwork.commonokhttp.OkConfigBuilder;
 import org.zhx.common.commonnetwork.commonokhttp.customObservable.CommonCallAdapterFactory;
 import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.CommonNetRequest;
-import org.zhx.common.mvp.retrofit.FastJsonConverterFactory;
 import org.zhx.common.mvp.widgets.BaseMvpView;
+import org.zhx.common.mvp.retrofit.FastJsonConverterFactory;
 
 import java.util.ArrayList;
 import java.util.HashMap;

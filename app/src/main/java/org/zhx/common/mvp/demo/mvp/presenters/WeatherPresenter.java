@@ -4,10 +4,10 @@ import android.util.Log;
 
 import org.zhx.common.commonnetwork.commonokhttp.OkConfig;
 import org.zhx.common.mvp.BasePresenter;
-import org.zhx.common.mvp.ObjectNetRequstAdapter;
 import org.zhx.common.mvp.demo.bean.WeatherInfo;
 import org.zhx.common.mvp.demo.mvp.models.WeatherApi;
 import org.zhx.common.mvp.retrofit.FastJsonConverterFactory;
+import org.zhx.common.mvp.uikit.impl.ObjectNetRequstAdapter;
 
 /**
  * Copyright (C), 2015-2020

@@ -4,12 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import org.zhx.common.mvp.activitys.MvpActivity;
 import org.zhx.common.mvp.demo.R;
 import org.zhx.common.mvp.demo.bean.WeatherInfo;
 import org.zhx.common.mvp.demo.mvp.presenters.WeatherPresenter;
 import org.zhx.common.mvp.demo.mvp.models.WeatherApi;
-import org.zhx.common.mvp.widgets.DialogApi;
+import org.zhx.common.mvp.uikit.activitys.MvpActivity;
 
 public class MainActivity extends MvpActivity<WeatherPresenter> implements WeatherApi.view {
     private TextView mTextView;
@@ -61,8 +60,4 @@ public class MainActivity extends MvpActivity<WeatherPresenter> implements Weath
         mTextView.setText(info.toString());
     }
 
-    @Override
-    public DialogApi creatLoadingDialog() {
-        return null;
-    }
 }
