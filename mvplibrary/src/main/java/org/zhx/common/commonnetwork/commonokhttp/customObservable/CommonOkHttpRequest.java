@@ -122,10 +122,16 @@ public class CommonOkHttpRequest<R, T> implements CommonNetRequest {
                         error = CommonLocalError.ROMOTE_ERROR;
                     } else if (!TextUtils.isEmpty(msg) && msg.contains("HTTP 404")) {
                         error = CommonLocalError.ROMOTE_NOT_FOUND;
+                    } else if (!TextUtils.isEmpty(msg) && msg.contains("HTTP 405")) {
+                        error = CommonLocalError.METHOD_NOT_ALLOW;
+                    } else {
+                        error = CommonLocalError.CONNECT_ERROR;
                     }
                 } else if (e instanceof IllegalArgumentException) {
                     if (!TextUtils.isEmpty(msg) && msg.contains("Malformed URL")) {
                         error = CommonLocalError.URL_NOT_FOUND;
+                    }else {
+                        error = CommonLocalError.ILLEGAL_ARGUMENT;
                     }
                 } else if (e instanceof ConnectException
                         || e instanceof UnknownHostException) {   //   连接错误
