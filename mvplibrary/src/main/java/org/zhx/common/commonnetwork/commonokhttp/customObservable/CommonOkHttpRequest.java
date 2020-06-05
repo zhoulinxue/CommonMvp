@@ -142,7 +142,9 @@ public class CommonOkHttpRequest<R, T> implements CommonNetRequest {
                         || e instanceof NumberFormatException
                         || e instanceof ParseException) {   //  解析错误
                     error = CommonLocalError.PARSE_ERROR;
-                } else {
+                } else if(e instanceof NullPointerException&&msg.contains("Null is not a valid element")){
+                    error = CommonLocalError.NULL_RESPONE;
+                }else {
                     error = CommonLocalError.UNKNOWN_LOCAL_ERROR;
                 }
             } catch (Exception e1) {
