@@ -8,6 +8,11 @@ package org.zhx.common.commonnetwork.commonokhttp.customObservable.api;
  * Date: 2018-11-14 13:58
  */
 public enum CommonLocalError {
+    /**
+      *
+      * @Description:local http error  enum code
+      * @CreateDate:2020/6/6 10:43
+      */
     SUC(200, "操作成功"),
     FAIL(300, "操作失败"),
     PARAM_ERROR(10401, "请求参数错误"),
@@ -34,7 +39,8 @@ public enum CommonLocalError {
     ROMOTE_ERROR(108, "服务异常"),
     METHOD_NOT_ALLOW(109, "方法错误"),
     ILLEGAL_ARGUMENT(110, "请求格式错误"),
-    NULL_RESPONE(111, "接口返回null");
+    NULL_RESPONE(111, "接口无响应"),
+    CONNECT_CANCEL(112, "请求取消");
     private int errorCode;
     private String errorMsg;
 
