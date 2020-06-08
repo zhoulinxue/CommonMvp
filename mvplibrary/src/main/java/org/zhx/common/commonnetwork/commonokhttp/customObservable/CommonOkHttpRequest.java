@@ -77,8 +77,9 @@ public class CommonOkHttpRequest<R, T> implements CommonNetRequest {
         mObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(mObserver);
-        if (mCallback != null)
+        if (mCallback != null) {
             add(mCallback.getRequestList());
+        }
         return this;
     }
 
@@ -159,8 +160,9 @@ public class CommonOkHttpRequest<R, T> implements CommonNetRequest {
                 error = CommonLocalError.UNKNOWN_LOCAL_ERROR;
             }
             if (mCallback != null) {
-                if (!"null".equals(error.getErrorMsg()) && !TextUtils.isEmpty(error.getErrorMsg()))
+                if (!"null".equals(error.getErrorMsg()) && !TextUtils.isEmpty(error.getErrorMsg())) {
                     mCallback.onError(error.getErrorCode() + "", error.getErrorMsg() + "");
+                }
             } else {
                 Log.e(TAG, "mCallback==null:" + (mCallback == null));
             }
