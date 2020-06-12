@@ -17,10 +17,20 @@
             android:visibility="gone" />
     </FrameLayout>
 
-    <FrameLayout
-        android:id="@+id/content_container"
+    <org.zhx.common.mvp.uikit.refresh.impl.SwipeToLoadLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:swipe_style="classic">
+
+        <include
+            android:id="@+id/swipe_refresh_header"
+            layout="@layout/layout_refresh_header" />
+
+        <FrameLayout
+            android:id="@+id/content_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </org.zhx.common.mvp.uikit.refresh.impl.SwipeToLoadLayout>
 
     <View
         android:id="@+id/title_divider"

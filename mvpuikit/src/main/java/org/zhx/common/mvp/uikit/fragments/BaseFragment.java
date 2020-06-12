@@ -48,7 +48,7 @@ public abstract class BaseFragment extends SimpleImmersionFragment implements Ba
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.i("CurrentPage-->", this.getClass().getSimpleName());
         mHandler = new Handler();
-        rootView = (RelativeLayout) inflater.inflate(R.layout.immersion_bar_layout, null);
+        rootView = (RelativeLayout) inflater.inflate(R.layout.layout_nomal, null);
         mContentContainer = rootView.findViewById(R.id.content_container);
         mTitleContainer = rootView.findViewById(R.id.title_container);
         mTitleProxy = new AlphaTitleProxy(mContentContainer, mTitleContainer);

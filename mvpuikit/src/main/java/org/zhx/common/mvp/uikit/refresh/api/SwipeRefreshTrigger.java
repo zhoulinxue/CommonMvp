@@ -1,4 +1,4 @@
-package org.zhx.common.mvp.uikit.refresh;
+package org.zhx.common.mvp.uikit.refresh.api;
 
 /**
  * @ProjectName: CommonMvp

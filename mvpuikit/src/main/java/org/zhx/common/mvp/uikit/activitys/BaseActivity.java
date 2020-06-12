@@ -93,7 +93,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
 
     @Override
     public final void setContentView(View view) {
-        setContentView(R.layout.immersion_bar_layout);
+        setContentView(R.layout.layout_nomal);
         initTitleView();
         if (immersionBarEnabled())
             initImmersionBar();

@@ -3,4 +3,8 @@
     <item name="swipe_target" type="id" />
     <item name="swipe_refresh_header" type="id" />
     <item name="swipe_load_more_footer" type="id" />
+    <item name="right_tv" type="id" />
+    <item name="left_tv" type="id" />
+    <item name="top_tv" type="id" />
+    <item name="container" type="id" />
 </resources>

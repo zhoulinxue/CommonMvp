@@ -1,4 +1,4 @@
-package org.zhx.common.mvp.uikit.refresh;
+package org.zhx.common.mvp.uikit.refresh.impl;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -15,6 +15,11 @@ import androidx.core.view.MotionEventCompat;
 import androidx.core.view.ViewCompat;
 
 import org.zhx.common.mvp.uikit.R;
+import org.zhx.common.mvp.uikit.refresh.api.OnLoadMoreListener;
+import org.zhx.common.mvp.uikit.refresh.api.OnRefreshListener;
+import org.zhx.common.mvp.uikit.refresh.api.SwipeLoadMoreTrigger;
+import org.zhx.common.mvp.uikit.refresh.api.SwipeRefreshTrigger;
+import org.zhx.common.mvp.uikit.refresh.api.SwipeTrigger;
 
 /**
  * @ProjectName: CommonMvp
