@@ -132,7 +132,7 @@ public abstract class BaseFragment extends SimpleImmersionFragment implements Ba
         }
     }
 
-
+    @Override
     public void showToast(final String message) {
         if (!TextUtils.isEmpty(message)) {
             if (getActivity() != null && !getActivity().isFinishing()) {
@@ -145,7 +145,7 @@ public abstract class BaseFragment extends SimpleImmersionFragment implements Ba
             }
         }
     }
-
+    @Override
     public void showToast(int res) {
         if (getActivity() != null && !getActivity().isFinishing())
             Toast.makeText(getActivity(), res, Toast.LENGTH_SHORT).show();

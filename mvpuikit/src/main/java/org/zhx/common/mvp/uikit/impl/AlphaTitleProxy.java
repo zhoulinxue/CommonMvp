@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.DrawableRes;
 import androidx.annotation.StringRes;
+
 import org.zhx.common.mvp.api.AlphaTitle;
 import org.zhx.common.mvp.uikit.R;
 import org.zhx.common.mvp.uikit.utils.StatuBarUtil;
@@ -53,7 +54,7 @@ public class AlphaTitleProxy implements AlphaTitle {
         }
     }
 
-
+    @Override
     public void setContentViewBelowTitleBar(boolean isBelow) {
         RelativeLayout.LayoutParams titleRela = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         if (isBelow) {
@@ -74,8 +75,9 @@ public class AlphaTitleProxy implements AlphaTitle {
         } else {
             mTitleHeight = RelativeLayout.LayoutParams.WRAP_CONTENT;
         }
-        if (layout != 0)
+        if (layout != 0) {
             initCoustomTitleBar(LayoutInflater.from(mContentContainer.getContext()).inflate(layout, null), height);
+        }
     }
 
     @Override
@@ -170,7 +172,7 @@ public class AlphaTitleProxy implements AlphaTitle {
     }
 
     public int getTitleHeight() {
-        return (mTitleContainer != null && mTitleContainer.getLayoutParams() != null) ? mTitleContainer.getLayoutParams().height : mDefaultHeight;
+        return mDefaultHeight;
     }
 
     public void bringcontentToFirst() {

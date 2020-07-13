@@ -36,6 +36,10 @@ public class MainActivity extends MvpActivity<WeatherPresenter> implements Weath
         //TODO  从低内存 获取 参数  （如果 你 在 onSaveInstanceState(Bundle outState) 方法中保存了数据）
     }
 
+    @Override
+    protected boolean isRefresh() {
+        return true;
+    }
 
     @Override
     public void onCreatView() {
@@ -55,8 +59,19 @@ public class MainActivity extends MvpActivity<WeatherPresenter> implements Weath
     }
 
     @Override
+    public void onRefresh() {
+        onLoadContent();
+    }
+
+    @Override
+    public void onLoadMore() {
+        onLoadContent();
+    }
+
+    @Override
     public void onWeatherInfo(WeatherInfo info) {
         //TODO 天气信息 (mPresenter.getWeatherInfo()  接口回调)
+        finishRefresh();
         mTextView.setText(info.toString());
     }
 
