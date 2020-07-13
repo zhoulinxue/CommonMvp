@@ -20,9 +20,6 @@ import com.gyf.barlibrary.ImmersionBar;
 import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.CommonNetRequest;
 import org.zhx.common.mvp.uikit.R;
 import org.zhx.common.mvp.uikit.impl.AlphaTitleProxy;
-import org.zhx.common.mvp.uikit.refresh.api.OnLoadMoreListener;
-import org.zhx.common.mvp.uikit.refresh.api.OnRefreshListener;
-import org.zhx.common.mvp.uikit.refresh.impl.SwipeToLoadLayout;
 import org.zhx.common.mvp.widgets.BaseMvpView;
 import org.zhx.common.mvp.widgets.DialogApi;
 import org.zhx.common.mvp.api.SimpleImmersionOwner;
@@ -41,7 +38,7 @@ import java.util.List;
  * Date: 2020/1/22 10:34
  * Description:
  */
-public abstract class BaseActivity extends AppCompatActivity implements BaseMvpView, OnRefreshListener, OnLoadMoreListener, ViewCreatApi<Intent>, SimpleImmersionOwner {
+public abstract class BaseActivity extends AppCompatActivity implements BaseMvpView, ViewCreatApi<Intent>, SimpleImmersionOwner {
     private DialogApi mLoading;
     private ViewGroup mContentContainer;
     private ViewGroup mTitleContainer;
@@ -52,7 +49,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
     private ImageView mBgImg;
     protected Handler mHandler;
     private View mRootView;
-    private SwipeToLoadLayout swipeToLoadLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,13 +65,11 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
             View view = getLayoutInflater().inflate(layout, null);
             setContentView(view);
         }
-        if (getIntent() != null) {
+        if (getIntent() != null)
             onLoadArgumentsData(getIntent());
-        }
         onCreatView();
-        if (savedInstanceState != null) {
+        if (savedInstanceState != null)
             onLoadDataFromSavedInstanceState(savedInstanceState);
-        }
         onLoadContent();
     }
 
@@ -99,92 +93,13 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
 
     @Override
     public final void setContentView(View view) {
-        if (isLoadMore()) {
-            setContentView(R.layout.layout_loadmore_layout);
-            swipeToLoadLayout = findViewById(R.id.swipe_refresh_layout);
-            swipeToLoadLayout.setOnLoadMoreListener(this);
-            swipeToLoadLayout.setOnRefreshListener(this);
-        } else if (isRefresh() && !isLoadMore()) {
-            setContentView(R.layout.layout_refresh);
-            swipeToLoadLayout = findViewById(R.id.swipe_refresh_layout);
-            swipeToLoadLayout.setOnRefreshListener(this);
-        } else {
-            setContentView(R.layout.layout_nomal);
-        }
+        setContentView(R.layout.layout_nomal);
         initTitleView();
-        if (immersionBarEnabled()) {
+        if (immersionBarEnabled())
             initImmersionBar();
-        }
         if (view != null) {
+            Log.e("MainActivity", "!!!!!!!!!!");
             mContentContainer.addView(view);
-        }
-    }
-
-    /**
-     * @param
-     * @return
-     * @method
-     * @description 是否 开启下拉刷新、加载更多
-     * @date: 2020/6/13 10:17
-     * @author: zhouxue
-     */
-    protected boolean isLoadMore() {
-        return false;
-    }
-
-    /**
-     * @param
-     * @return
-     * @method
-     * @description 是否 支持刷新
-     * @date: 2020/6/13 10:16
-     * @author: zhouxue
-     */
-    protected boolean isRefresh() {
-        return false;
-    }
-
-    @Override
-    public void onRefresh() {
-
-    }
-
-    @Override
-    public void onLoadMore() {
-
-    }
-
-    /**
-     * @param
-     * @return
-     * @method
-     * @description 下拉刷下结束
-     * @date: 2020/6/13 10:39
-     * @author: zhouxue
-     */
-    protected void finishRefresh() {
-        if (swipeToLoadLayout != null) {
-            swipeToLoadLayout.setRefreshing(false);
-        }
-    }
-
-    /**
-     * @param
-     * @return
-     * @method
-     * @description 加载更多结束
-     * @date: 2020/6/13 10:39
-     * @author: zhouxue
-     */
-    protected void finishLoadMore() {
-        if (swipeToLoadLayout != null) {
-            swipeToLoadLayout.setLoadingMore(false);
-        }
-    }
-
-    protected void noMoreData() {
-        if (swipeToLoadLayout != null) {
-            swipeToLoadLayout.setLoadMoreEnabled(false);
         }
     }
 
@@ -243,12 +158,10 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
         }
     }
 
-    @Override
     public boolean isOldAPI() {
         return Build.VERSION.SDK_INT < Build.VERSION_CODES.M;
     }
 
-    @Override
     public boolean isDarkTitle() {
         return AppUtils.isDarkMode(this);
     }
@@ -271,9 +184,8 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
     @Override
     public void showLoadingDialog(int resId) {
         if (mLoading != null) {
-            if (resId != 0) {
+            if (resId != 0)
                 mLoading.setMessage(getResources().getString(resId));
-            }
             showLoadingDialog();
         }
     }
