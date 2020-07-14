@@ -4,10 +4,13 @@
 
 ### 2、为新手提供一个 可靠 可用的 mvp 框架结构
 
-## commonMvp 能做什么？
+### commonMvp 能做什么？
  1、mvp 实现 model  view  presenter 业务和界面解耦
+
  2、整合 网络 请求
+
  3、简化网络调用流程
+
  4、整合状态栏和标题栏 实现沉浸式 状态栏
 ### 配合使用的框架
     1、okhttp 、retrofit2、rxJava 、rxandroid (okhttp 实现网络全套)
