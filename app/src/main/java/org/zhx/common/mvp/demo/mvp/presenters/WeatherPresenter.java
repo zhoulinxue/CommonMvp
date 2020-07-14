@@ -9,6 +9,8 @@ import org.zhx.common.mvp.demo.mvp.models.WeatherApi;
 import org.zhx.common.mvp.retrofit.FastJsonConverterFactory;
 import org.zhx.common.mvp.uikit.impl.ObjectNetRequstAdapter;
 
+import okhttp3.Interceptor;
+
 /**
  * Copyright (C), 2015-2020
  * FileName: WeatherPresenter
@@ -20,12 +22,17 @@ public class WeatherPresenter extends BasePresenter<WeatherApi.view> implements 
     public WeatherPresenter(WeatherApi.view view) {
         super(view);
     }
-
+    // 可以对 okHttp 进行设置
     @Override
     protected OkConfig onCreatHttpCofig() {
         OkConfig config=super.onCreatHttpCofig();
         config.setConverterFactory(FastJsonConverterFactory.create());
         return config;
+    }
+    // 可以对 okHttp Header 设置
+    @Override
+    protected Interceptor creatHeaderIntercepor() {
+        return super.creatHeaderIntercepor();
     }
 
     @Override
