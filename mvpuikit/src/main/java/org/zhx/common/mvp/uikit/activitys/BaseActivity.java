@@ -183,10 +183,14 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
         }
     }
     @Override
-    public boolean openDarkStatuBar() {
-        return AppUtils.isDarkMode(this);
+    public boolean isOldAPI() {
+        return Build.VERSION.SDK_INT < Build.VERSION_CODES.M;
     }
 
+    @Override
+    public boolean openDarkStatuBar() {
+        return true;
+    }
 
     @Override
     public void showToast(int res) {

@@ -68,9 +68,4 @@ public abstract class SimpleImmersionFragment extends Fragment implements Simple
     public boolean isOldAPI() {
         return Build.VERSION.SDK_INT < Build.VERSION_CODES.M;
     }
-
-    @Override
-    public boolean isDarkTitle() {
-        return true;
-    }
 }

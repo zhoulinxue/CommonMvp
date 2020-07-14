@@ -83,6 +83,11 @@ public abstract class BaseFragment extends SimpleImmersionFragment implements Ba
     }
 
     @Override
+    public boolean openDarkStatuBar() {
+        return true;
+    }
+
+    @Override
     public final void onCreatView() {
         onCreateView(getRootView());
     }
@@ -109,7 +114,7 @@ public abstract class BaseFragment extends SimpleImmersionFragment implements Ba
 
     @Override
     public void initImmersionBar() {
-        if (isDarkTitle() || isOldAPI()) {
+        if (openDarkStatuBar() || isOldAPI()) {
             ImmersionBar.with(this).statusBarDarkFont(true, 0.2f).keyboardEnable(true).init();
         } else {
             ImmersionBar.with(this).keyboardEnable(true).init();

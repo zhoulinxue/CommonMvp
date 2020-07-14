@@ -27,6 +27,12 @@ public interface SimpleImmersionOwner {
 
     /**
      *
+     * @return 是否 6.0一下 系统
+     */
+     boolean isOldAPI() ;
+
+    /**
+     *
      * @return  是否黑色状态栏
      */
      boolean openDarkStatuBar();
