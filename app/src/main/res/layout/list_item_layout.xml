@@ -17,6 +17,6 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/item_tv"
-        android:background="#fefefe" />
+        android:background="@color/color_E6E8ED" />
 
 </RelativeLayout>

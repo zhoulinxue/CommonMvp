@@ -21,7 +21,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".activitys.TestActivity" />
-        <activity android:name=".activitys.TestFragmentActivity"/>
+        <activity android:name=".activitys.TestFragmentActivity" />
+        <activity android:name=".activitys.TestTitleActivity" />
+        <activity android:name=".activitys.StatusBarActivity" />
     </application>
 
 </manifest>

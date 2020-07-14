@@ -31,4 +31,5 @@ public interface BaseMvpView {
     Context getContext();
 
     List<CommonNetRequest> getRequestList();
+
 }

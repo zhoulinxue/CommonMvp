@@ -30,6 +30,8 @@ import java.util.List;
  * @Version:1.0
  */
 public class ListItemActivity extends BaseActivity {
+    private boolean isdarkbar = true;
+
     @Override
     public int initLayout() {
         return R.layout.list_activity;
@@ -46,6 +48,8 @@ public class ListItemActivity extends BaseActivity {
         List<String> datas = new ArrayList<>();
         datas.add("activity 中 使用效果");
         datas.add("fragment 中使用效果");
+        datas.add("一句话 title栏");
+        datas.add("状态栏 颜色");
         StringAdapter adapter = new StringAdapter(datas);
         recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
@@ -57,6 +61,12 @@ public class ListItemActivity extends BaseActivity {
                         break;
                     case 1:
                         startActivity(new Intent(ListItemActivity.this, TestFragmentActivity.class));
+                        break;
+                    case 2:
+                        startActivity(new Intent(ListItemActivity.this, TestTitleActivity.class));
+                        break;
+                    case 3:
+                        startActivity(new Intent(ListItemActivity.this, StatusBarActivity.class));
                         break;
                     default:
                         break;

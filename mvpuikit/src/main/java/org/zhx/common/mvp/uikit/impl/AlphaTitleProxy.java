@@ -2,6 +2,7 @@ package org.zhx.common.mvp.uikit.impl;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -23,6 +24,7 @@ import org.zhx.common.mvp.uikit.utils.StatuBarUtil;
  * creatTime: 2019/3/25
  */
 public class AlphaTitleProxy implements AlphaTitle {
+    private String TAG=AlphaTitleProxy.class.getSimpleName();
     private ViewGroup mContentContainer;
     private ViewGroup mTitleContainer;
     private int mStatusHeight = 0;
@@ -205,5 +207,19 @@ public class AlphaTitleProxy implements AlphaTitle {
         }
     }
 
-    ;
+    public void setBackImageRes(@DrawableRes int drawable){
+        setBackImageRes(R.id.back_img,drawable);
+    }
+
+    public void setBackImageRes(int id,@DrawableRes int drawable){
+        if(mTitleContainer!=null){
+            try {
+                ImageView imageView = mTitleContainer.findViewById(id);
+                imageView.setImageResource(drawable);
+            }catch (Exception e){
+                Log.e(TAG,"返回键图标设置失败...请检查id...");
+            }
+        }
+    }
+
 }

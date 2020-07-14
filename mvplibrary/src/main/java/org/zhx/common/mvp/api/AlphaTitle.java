@@ -31,4 +31,5 @@ public interface AlphaTitle {
     void showTextOption(boolean showTextOption, String text);
 
     void setTextOptionBg(@DrawableRes int bg_save);
+
 }

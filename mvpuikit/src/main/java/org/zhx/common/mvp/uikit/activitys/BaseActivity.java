@@ -182,8 +182,9 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
             ImmersionBar.with(this).keyboardEnable(true).init();
         }
     }
+
     @Override
-    public boolean isOldAPI() {
+    public final boolean isOldAPI() {
         return Build.VERSION.SDK_INT < Build.VERSION_CODES.M;
     }
 
