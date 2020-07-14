@@ -17,9 +17,6 @@ public interface WeatherApi {
     @GET("http://t.weather.sojson.com/api/weather/city/101030100")
     public CommonObservable<WeatherInfo> getTest();
 
-    @GET("http://192.168.10.105:8080/pay?externalUserId=10005&skuId=568")
-    public CommonObservable<Object> getPay();
-
     public interface view extends BaseMvpView {
         void onWeatherInfo(WeatherInfo info);
     }
