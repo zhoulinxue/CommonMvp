@@ -2,6 +2,8 @@ package org.zhx.common.mvp.uikit.activitys;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.ColorRes;
+import androidx.annotation.DrawableRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -113,6 +116,28 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
         mRootView = findViewById(R.id.root_layout);
     }
 
+    protected void setBackGroundImage(@DrawableRes int res) {
+        if (res != 0) {
+            mBgImg.setImageResource(res);
+            mContentContainer.setBackgroundColor(getResources().getColor(R.color.transparent));
+        }
+    }
+
+    protected void setBackGroundBitmap(Bitmap bitmap) {
+        if (bitmap != null && !bitmap.isRecycled()) {
+            mBgImg.setImageBitmap(bitmap);
+            mContentContainer.setBackgroundColor(getResources().getColor(R.color.transparent));
+        }
+    }
+
+    protected void setBackGroundDrawable(Drawable drawable) {
+        if (drawable != null) {
+            mBgImg.setImageDrawable(drawable);
+            mContentContainer.setBackgroundColor(getResources().getColor(R.color.transparent));
+        }
+    }
+
+
     public void showTitleDivider() {
         mTitleDivider.setVisibility(View.VISIBLE);
     }
@@ -151,18 +176,20 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
 
     @Override
     public void initImmersionBar() {
-        if (isDarkTitle() || isOldAPI()) {
+        if (openDarkStatuBar() || isOldAPI()) {
             ImmersionBar.with(this).statusBarDarkFont(true, 0.2f).keyboardEnable(true).init();
         } else {
             ImmersionBar.with(this).keyboardEnable(true).init();
         }
     }
 
+    @Override
     public boolean isOldAPI() {
         return Build.VERSION.SDK_INT < Build.VERSION_CODES.M;
     }
 
-    public boolean isDarkTitle() {
+    @Override
+    public boolean openDarkStatuBar() {
         return AppUtils.isDarkMode(this);
     }
 

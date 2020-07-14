@@ -35,5 +35,5 @@ public interface SimpleImmersionOwner {
      *
      * @return  是否黑色状态栏
      */
-     boolean isDarkTitle();
+     boolean openDarkStatuBar();
 }

@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import org.zhx.common.mvp.demo.R;
 import org.zhx.common.mvp.demo.bean.WeatherInfo;
 import org.zhx.common.mvp.demo.mvp.presenters.WeatherPresenter;
@@ -37,8 +39,9 @@ public class MainActivity extends MvpActivity<WeatherPresenter> implements Weath
     }
 
     @Override
-    protected boolean isRefresh() {
-        return true;
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        //TODO 保存 数据 以供 从低内存恢复 时 还原界面
     }
 
     @Override
@@ -53,25 +56,19 @@ public class MainActivity extends MvpActivity<WeatherPresenter> implements Weath
     }
 
     @Override
+    public boolean openDarkStatuBar() {
+        return true;
+    }
+
+    @Override
     public void onLoadContent() {
         //TODO 在这个位置 获取 网络 数据
         mPresenter.getWeatherInfo();
     }
 
     @Override
-    public void onRefresh() {
-        onLoadContent();
-    }
-
-    @Override
-    public void onLoadMore() {
-        onLoadContent();
-    }
-
-    @Override
     public void onWeatherInfo(WeatherInfo info) {
         //TODO 天气信息 (mPresenter.getWeatherInfo()  接口回调)
-        finishRefresh();
         mTextView.setText(info.toString());
     }
 

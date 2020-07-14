@@ -18,6 +18,11 @@ public interface ViewCreatApi<T> {
     public  int initLayout();
 
     /**
+     * 布局已设置完
+     */
+    public  void onCreatView();
+
+    /**
      * 获取传递参数
      *
      * @param data
@@ -30,11 +35,6 @@ public interface ViewCreatApi<T> {
      * @param savedInstanceState
      */
     public  void onLoadDataFromSavedInstanceState(Bundle savedInstanceState);
-
-    /**
-     * 布局已设置完
-     */
-    public  void onCreatView();
 
     /**
      * 加载 网络数据
