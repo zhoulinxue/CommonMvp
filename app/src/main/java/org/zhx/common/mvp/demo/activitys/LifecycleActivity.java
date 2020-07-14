@@ -28,7 +28,7 @@ public class LifecycleActivity extends BaseActivity {
      * initImmersionBar()..
      *
      * 获取传递 的数据
-     * onLoadArgumentsData()..
+     * onLoadArgumentsData(Intent intent)..
      *
      * 初始化 view
      *  onCreatView()..
@@ -36,7 +36,6 @@ public class LifecycleActivity extends BaseActivity {
      *  设置数据  从网络 获取数据
      *  onLoadContent()..
      *
-     * @return
      */
     @Override
     public int initLayout() {
