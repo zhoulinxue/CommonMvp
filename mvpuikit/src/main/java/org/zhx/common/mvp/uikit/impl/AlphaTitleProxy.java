@@ -14,8 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.StringRes;
 
-import org.zhx.common.mvp.api.AlphaTitle;
 import org.zhx.common.mvp.uikit.R;
+import org.zhx.common.mvp.uikit.api.AlphaTitle;
 import org.zhx.common.mvp.uikit.utils.StatuBarUtil;
 
 /**

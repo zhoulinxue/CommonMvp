@@ -1,7 +1,7 @@
 package org.zhx.common.mvp.uikit.impl;
 
-import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.CommonNetRequest;
-import org.zhx.common.mvp.widgets.BaseMvpView;
+import org.zhx.common.commonnetwork.api.CommonNetRequest;
+import org.zhx.common.mvp.uikit.api.widgets.BaseMvpView;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import java.util.List;
  * creatTime: 2019/8/1
  * description :
  */
-public abstract class ObjectNetRequstAdapter<R> extends NetRequstAdapter<R, R> {
+public abstract class ObjectNetRequstAdapter<R> extends NetRequstAdapter<R, Void> {
     public ObjectNetRequstAdapter(BaseMvpView mvpView) {
         super(mvpView);
     }
@@ -37,7 +37,7 @@ public abstract class ObjectNetRequstAdapter<R> extends NetRequstAdapter<R, R> {
     protected abstract void onResultData(R info);
 
     @Override
-    public final void onData(R r) {
+    public final void onData(Void r) {
 
     }
 

@@ -1,4 +1,4 @@
-package org.zhx.common.mvp.widgets;
+package org.zhx.common.mvp.uikit.api.widgets;
 
 /**
  * Copyright (C), 2015-2020

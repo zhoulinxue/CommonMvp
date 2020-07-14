@@ -1,4 +1,4 @@
-package org.zhx.common.commonnetwork.commonokhttp.customObservable;
+package org.zhx.common.commonnetwork.customObservable;
 
 import androidx.annotation.Nullable;
 
@@ -17,7 +17,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.Result;
 
 /**
- * pakage :org.zhx.common.commonnetwork.commonokhttp.customObservable
+ * pakage :org.zhx.common.commonnetwork.customObservable
  * auther :zx
  * creatTime: 2019/7/2
  * description :
@@ -45,7 +45,7 @@ public class CommonCallAdapterFactory extends CallAdapter.Factory {
         if (rawType == Completable.class) {
             // Completable is not parameterized (which is what the rest of this method deals with) so it
             // can only be created with a single configuration.
-            return new ComonCallAdapter<>(Void.class, scheduler, false, false, true, false, false,
+            return new CommonCallAdapter<>(Void.class, scheduler, false, false, true, false, false,
                     false, true);
         }
 
@@ -87,7 +87,7 @@ public class CommonCallAdapterFactory extends CallAdapter.Factory {
             isBody = true;
         }
 
-        return new ComonCallAdapter<>(responseType, scheduler, false, isResult, isBody, isFlowable,
+        return new CommonCallAdapter<>(responseType, scheduler, false, isResult, isBody, isFlowable,
                 isSingle, isMaybe, false);
     }
 }

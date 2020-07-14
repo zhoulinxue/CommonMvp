@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import org.zhx.common.mvp.uikit.R;
-import org.zhx.common.mvp.widgets.DialogApi;
+import org.zhx.common.mvp.uikit.api.widgets.DialogApi;
 
 
 /**

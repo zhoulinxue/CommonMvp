@@ -1,4 +1,4 @@
-package org.zhx.common.commonnetwork.commonokhttp.customObservable.api;
+package org.zhx.common.commonnetwork.api;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import java.util.List;
  * Date: 2018\10\31 0031 17:29
  * Description: ${DESCRIPTION}
  */
-public interface CommonNetRequestCallBack<R,T> {
+public interface CommonNetRequestCallBack<R, T> {
     public void onLoadComplete();
 
     public void onData(T t);

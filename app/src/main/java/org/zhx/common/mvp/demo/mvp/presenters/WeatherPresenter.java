@@ -1,8 +1,6 @@
 package org.zhx.common.mvp.demo.mvp.presenters;
 
-import android.util.Log;
-
-import org.zhx.common.commonnetwork.commonokhttp.OkConfig;
+import org.zhx.common.commonnetwork.OkConfig;
 import org.zhx.common.mvp.BasePresenter;
 import org.zhx.common.mvp.demo.bean.WeatherInfo;
 import org.zhx.common.mvp.demo.mvp.models.WeatherApi;
@@ -22,13 +20,15 @@ public class WeatherPresenter extends BasePresenter<WeatherApi.view> implements 
     public WeatherPresenter(WeatherApi.view view) {
         super(view);
     }
+
     // 可以对 okHttp 进行设置
     @Override
     protected OkConfig onCreatHttpCofig() {
-        OkConfig config=super.onCreatHttpCofig();
+        OkConfig config = super.onCreatHttpCofig();
         config.setConverterFactory(FastJsonConverterFactory.create());
         return config;
     }
+
     // 可以对 okHttp Header 设置
     @Override
     protected Interceptor creatHeaderIntercepor() {
@@ -37,6 +37,7 @@ public class WeatherPresenter extends BasePresenter<WeatherApi.view> implements 
 
     @Override
     public void getWeatherInfo() {
+        mView.showLoadingDialog();
         manager.with(WeatherApi.class).getTest().excute(new ObjectNetRequstAdapter<WeatherInfo>(mView) {
 
             @Override

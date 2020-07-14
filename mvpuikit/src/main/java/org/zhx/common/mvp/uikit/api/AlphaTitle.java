@@ -1,4 +1,4 @@
-package org.zhx.common.mvp.api;
+package org.zhx.common.mvp.uikit.api;
 
 import android.view.View;
 

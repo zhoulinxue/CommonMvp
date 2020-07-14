@@ -1,8 +1,8 @@
-package org.zhx.common.mvp.widgets;
+package org.zhx.common.mvp.uikit.api.widgets;
 
 import android.content.Context;
 
-import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.CommonNetRequest;
+import org.zhx.common.commonnetwork.api.CommonNetRequest;
 
 import java.util.List;
 

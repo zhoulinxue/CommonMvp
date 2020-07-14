@@ -2,13 +2,12 @@ package org.zhx.common.mvp;
 
 import android.util.Log;
 
+import org.zhx.common.commonnetwork.HeaderInterceptor;
 import org.zhx.common.commonnetwork.HttpManager;
-import org.zhx.common.commonnetwork.commonokhttp.HeaderInterceptor;
-import org.zhx.common.commonnetwork.commonokhttp.OkConfig;
-import org.zhx.common.commonnetwork.commonokhttp.OkConfigBuilder;
-import org.zhx.common.commonnetwork.commonokhttp.customObservable.CommonCallAdapterFactory;
-import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.CommonNetRequest;
-import org.zhx.common.mvp.widgets.BaseMvpView;
+import org.zhx.common.commonnetwork.OkConfig;
+import org.zhx.common.commonnetwork.OkConfigBuilder;
+import org.zhx.common.commonnetwork.api.CommonNetRequest;
+import org.zhx.common.commonnetwork.customObservable.CommonCallAdapterFactory;
 import org.zhx.common.mvp.retrofit.FastJsonConverterFactory;
 
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ import okhttp3.Interceptor;
  * Date: 2020/1/22 11:47
  * Description:
  */
-public abstract class BasePresenter<V extends BaseMvpView> {
+public abstract class BasePresenter<V> {
     protected V mView;
     protected int pageNumber = 1;
     protected int pageSize = 10;
@@ -55,7 +54,7 @@ public abstract class BasePresenter<V extends BaseMvpView> {
      * @return
      */
     protected OkConfig onCreatHttpCofig() {
-        OkConfig config =creatNewConfigByTag(HttpManager.DEFAULT_TAG);
+        OkConfig config = creatNewConfigByTag(HttpManager.DEFAULT_TAG);
         return config;
     }
 
@@ -65,15 +64,15 @@ public abstract class BasePresenter<V extends BaseMvpView> {
                 .setConverterFactory(FastJsonConverterFactory.create())
                 .setHttps(true)
                 .build();
-        Interceptor interceptor=null;
-        if(HttpManager.DEFAULT_TAG.equals(tag)){
-            interceptor=creatHeaderIntercepor();
-        }else {
-            interceptor=creatHeaderIntercepor(tag);
+        Interceptor interceptor = null;
+        if (HttpManager.DEFAULT_TAG.equals(tag)) {
+            interceptor = creatHeaderIntercepor();
+        } else {
+            interceptor = creatHeaderIntercepor(tag);
         }
-        if(interceptor==null){
+        if (interceptor == null) {
             config.setInterceptor(creatCommonHeader(tag));
-        }else {
+        } else {
             config.setOkInterceptor(interceptor);
         }
         return config;
@@ -86,6 +85,7 @@ public abstract class BasePresenter<V extends BaseMvpView> {
     protected Interceptor creatHeaderIntercepor() {
         return null;
     }
+
     protected Interceptor creatHeaderIntercepor(String tag) {
         return null;
     }
@@ -113,6 +113,7 @@ public abstract class BasePresenter<V extends BaseMvpView> {
         }
         return map;
     }
+
     /**
      * 字符串数组 转 map
      *
@@ -125,8 +126,8 @@ public abstract class BasePresenter<V extends BaseMvpView> {
             if (params.length % 2 == 0) {
                 for (int i = 0; i < params.length; i++) {
                     if (i % 2 == 0) {
-                        if (!"null".equals(params[i + 1])&&params[i+1]!=null)
-                            map.put(params[i]+"", params[i + 1]);
+                        if (!"null".equals(params[i + 1]) && params[i + 1] != null)
+                            map.put(params[i] + "", params[i + 1]);
                     }
                 }
             } else {

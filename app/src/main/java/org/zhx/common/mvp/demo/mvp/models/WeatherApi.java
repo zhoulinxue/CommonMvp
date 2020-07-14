@@ -1,8 +1,7 @@
 package org.zhx.common.mvp.demo.mvp.models;
-
-import org.zhx.common.commonnetwork.commonokhttp.customObservable.CommonObservable;
-import org.zhx.common.mvp.widgets.BaseMvpView;
+import org.zhx.common.commonnetwork.customObservable.CommonObservable;
 import org.zhx.common.mvp.demo.bean.WeatherInfo;
+import org.zhx.common.mvp.uikit.api.widgets.BaseMvpView;
 
 import retrofit2.http.GET;
 

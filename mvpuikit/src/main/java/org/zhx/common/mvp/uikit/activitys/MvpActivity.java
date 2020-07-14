@@ -5,7 +5,7 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.CommonNetRequest;
+import org.zhx.common.commonnetwork.api.CommonNetRequest;
 import org.zhx.common.mvp.BasePresenter;
 import org.zhx.common.mvp.api.PresenterApi;
 

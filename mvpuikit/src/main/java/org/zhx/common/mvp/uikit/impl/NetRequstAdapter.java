@@ -3,10 +3,10 @@ package org.zhx.common.mvp.uikit.impl;
 
 import android.util.Log;
 
-import org.zhx.common.commonnetwork.commonokhttp.NetWorkUtil;
-import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.CommonLocalError;
-import org.zhx.common.commonnetwork.commonokhttp.customObservable.api.CommonNetRequestCallBack;
-import org.zhx.common.mvp.widgets.BaseMvpView;
+import org.zhx.common.commonnetwork.NetWorkUtil;
+import org.zhx.common.commonnetwork.api.CommonLocalError;
+import org.zhx.common.commonnetwork.api.CommonNetRequestCallBack;
+import org.zhx.common.mvp.uikit.api.widgets.BaseMvpView;
 import org.zhx.common.mvp.utils.CommonFileCacheUtil;
 
 /**
