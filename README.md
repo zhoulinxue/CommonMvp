@@ -12,12 +12,15 @@
  3、简化网络调用流程
 
  4、整合状态栏和标题栏 实现沉浸式 状态栏
+
+ 5、Activity 、Fragment 中 使用  方法 一致 同步封装 方法
+
 ### 配合使用的框架
     1、okhttp 、retrofit2、rxJava 、rxandroid (okhttp 实现网络全套)
 
     2、immersionbar  实现沉浸式状态栏
 
-    3、fastjson 、gson  实现json 解析
+    3、fastjson   实现json 解析
 
 ## 集成
 
@@ -85,9 +88,9 @@ public class WeatherPresenter extends BasePresenter<WeatherApi.view> implements 
     }
 }
  ```
+### Activity 、Fragment 中 使用  方法 一致 同步封装 方法
 
-
- 3、 activity中使用  继承 MvpActivity<WeatherPresenter>   实现  WeatherApi.view
+ 3、 activity 中使用  继承 MvpActivity<WeatherPresenter>   实现  WeatherApi.view
  ```
  public class MainActivity extends MvpActivity<WeatherPresenter> implements WeatherApi.view {
      private TextView mTextView;
@@ -141,6 +144,42 @@ public class WeatherPresenter extends BasePresenter<WeatherApi.view> implements 
 
  }
  ```
+ 4、 Fragment中使用  继承 MvpFragment<WeatherPresenter>   实现  WeatherApi.view
+```
+public class TestFragment extends MvpFragment<WeatherPresenter> implements WeatherApi.view {
+    private TextView mTextView;
 
+    @Override
+    public WeatherPresenter initPresenter() {
+        //TODO 初始化 天气 presenter
+        return new WeatherPresenter(this);
+    }
+
+    @Override
+    protected void onCreateView(View rootView) {
+        //TODO 初始化 view findViewById
+        mTextView = rootView.findViewById(R.id.result_tv);
+    }
+
+    @Override
+    public int initLayout() {
+        //TODO 初始化 布局文件
+        return R.layout.activity_main;
+    }
+
+    @Override
+    public void onLoadContent() {
+        //TODO 加载网络数据 或者 设置 传递过来的参数
+        mPresenter.getWeatherInfo();
+    }
+
+    @Override
+    public void onWeatherInfo(WeatherInfo info) {
+        //TODO 天气信息 (mPresenter.getWeatherInfo()  接口回调)
+        mTextView.setText(info.toString());
+
+    }
+}
+```
 
 
