@@ -12,7 +12,7 @@ import org.zhx.common.mvp.demo.mvp.presenters.WeatherPresenter;
 import org.zhx.common.mvp.demo.mvp.models.WeatherApi;
 import org.zhx.common.mvp.uikit.activitys.MvpActivity;
 
-public class MainActivity extends MvpActivity<WeatherPresenter> implements WeatherApi.view {
+public class TestActivity extends MvpActivity<WeatherPresenter> implements WeatherApi.view {
     private TextView mTextView;
 
     @Override

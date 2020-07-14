@@ -24,6 +24,8 @@ public interface AlphaTitle {
 
     public void setCommonTitle(String title);
 
+    public void setCommonBackImageVisible(int visible);
+
     public void setTitleClickListener(View.OnClickListener clickListener);
 
     void showTextOption(boolean showTextOption, String text);

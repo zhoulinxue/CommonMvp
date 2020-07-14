@@ -197,4 +197,13 @@ public class AlphaTitleProxy implements AlphaTitle {
         }
         return false;
     }
+
+    @Override
+    public void setCommonBackImageVisible(int visible) {
+        if (mBackImg != null) {
+            mBackImg.setVisibility(visible);
+        }
+    }
+
+    ;
 }

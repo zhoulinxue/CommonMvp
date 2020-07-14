@@ -7,7 +7,16 @@
         android:id="@+id/item_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:paddingBottom="10dp"
         android:textColor="#333"
         android:textSize="16sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/item_tv"
+        android:background="#fefefe" />
 
 </RelativeLayout>

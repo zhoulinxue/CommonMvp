@@ -3,12 +3,9 @@ package org.zhx.common.mvp.demo.activitys;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -40,6 +37,10 @@ public class ListItemActivity extends BaseActivity {
 
     @Override
     public void onCreatView() {
+        mTitleProxy.setCommonTitle("commonMvp");
+        mTitleProxy.setContentViewBelowTitleBar(true);
+        mTitleProxy.setCommonBackImageVisible(View.GONE);
+        showTitleDivider();
         RecyclerView recyclerView = findViewById(R.id.list_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         List<String> datas = new ArrayList<>();
@@ -52,10 +53,10 @@ public class ListItemActivity extends BaseActivity {
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 switch (position) {
                     case 0:
-                        startActivity(new Intent(ListItemActivity.this, MainActivity.class));
+                        startActivity(new Intent(ListItemActivity.this, TestActivity.class));
                         break;
                     case 1:
-                        startActivity(new Intent(ListItemActivity.this, FragmentActivity.class));
+                        startActivity(new Intent(ListItemActivity.this, TestFragmentActivity.class));
                         break;
                     default:
                         break;
