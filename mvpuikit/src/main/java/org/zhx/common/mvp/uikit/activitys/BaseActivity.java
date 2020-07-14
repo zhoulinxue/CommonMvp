@@ -42,6 +42,7 @@ import java.util.List;
  * Description:
  */
 public abstract class BaseActivity extends AppCompatActivity implements BaseMvpView, ViewCreatApi<Intent>, SimpleImmersionOwner {
+    protected String TAG="commonMVp";
     private DialogApi mLoading;
     private ViewGroup mContentContainer;
     private ViewGroup mTitleContainer;
@@ -63,16 +64,23 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
         initkeyBoard();
         Log.i("Activitys-->", this.getClass().getSimpleName());
         mHandler = new Handler();
+        Log.e(TAG,"initPresenter()..");
         int layout = initLayout();
         if (layout != 0) {
             View view = getLayoutInflater().inflate(layout, null);
             setContentView(view);
         }
-        if (getIntent() != null)
+        if (getIntent() != null) {
+            Log.e(TAG,"onLoadArgumentsData()..");
             onLoadArgumentsData(getIntent());
+        }
+        Log.e(TAG,"onCreatView()..");
         onCreatView();
-        if (savedInstanceState != null)
+        if (savedInstanceState != null) {
+            Log.e(TAG,"onLoadDataFromSavedInstanceState()..");
             onLoadDataFromSavedInstanceState(savedInstanceState);
+        }
+        Log.e(TAG,"onLoadContent()..");
         onLoadContent();
     }
 
@@ -98,7 +106,9 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
     public final void setContentView(View view) {
         setContentView(R.layout.layout_nomal);
         initTitleView();
+        Log.e(TAG,"immersionBarEnabled()..");
         if (immersionBarEnabled())
+            Log.e(TAG,"initImmersionBar()..");
             initImmersionBar();
         if (view != null) {
             Log.e("MainActivity", "!!!!!!!!!!");

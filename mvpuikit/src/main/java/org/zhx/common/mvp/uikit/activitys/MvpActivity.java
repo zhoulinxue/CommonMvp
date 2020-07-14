@@ -1,6 +1,7 @@
 package org.zhx.common.mvp.uikit.activitys;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -24,6 +25,7 @@ public abstract class MvpActivity<T extends BasePresenter> extends BaseActivity 
     @Override
     protected final void onCreate(@Nullable Bundle savedInstanceState) {
         mPresenter = initPresenter();
+        Log.e(TAG,"initPresenter()..");
         super.onCreate(savedInstanceState);
     }
 

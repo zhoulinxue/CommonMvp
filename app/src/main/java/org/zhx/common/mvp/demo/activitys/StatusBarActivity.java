@@ -25,9 +25,17 @@ public class StatusBarActivity extends BaseActivity {
      */
     @Override
     public boolean openDarkStatuBar() {
-        // false 白色状态栏 true 是 黑色状态栏文字
-        return false;
+        // false 白色状态栏   默认 为true
+        // true 是 黑色状态栏文字
+        return super.openDarkStatuBar();
     }
+
+    //是否开启 沉浸式状态栏 默认是开启
+    @Override
+    public boolean immersionBarEnabled() {
+        return super.immersionBarEnabled();
+    }
+
 
     @Override
     public int initLayout() {

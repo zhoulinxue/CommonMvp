@@ -46,8 +46,8 @@ public class ListItemActivity extends BaseActivity {
         RecyclerView recyclerView = findViewById(R.id.list_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         List<String> datas = new ArrayList<>();
-        datas.add("activity 中 使用效果");
-        datas.add("fragment 中使用效果");
+        datas.add("activity 中 优雅的网络请求");
+        datas.add("fragment 中 优雅的网络请求");
         datas.add("一句话 title栏");
         datas.add("状态栏 颜色");
         StringAdapter adapter = new StringAdapter(datas);

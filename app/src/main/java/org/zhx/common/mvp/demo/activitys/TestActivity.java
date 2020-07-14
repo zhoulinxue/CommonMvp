@@ -15,6 +15,10 @@ import org.zhx.common.mvp.uikit.activitys.MvpActivity;
 public class TestActivity extends MvpActivity<WeatherPresenter> implements WeatherApi.view {
     private TextView mTextView;
 
+    /**
+     *  重置了  activity 生命周期   方法执行 顺序 依次往下
+     * @return
+     */
     @Override
     public WeatherPresenter initPresenter() {
         //TODO  初始化  presenter
@@ -28,9 +32,25 @@ public class TestActivity extends MvpActivity<WeatherPresenter> implements Weath
     }
 
     @Override
+    public void onCreatView() {
+        //TODO  初始化 组件
+        mTextView = findViewById(R.id.result_tv);
+    }
+    @Override
     public void onLoadArgumentsData(Intent intent) {
         //TODO  获取传递过来的参数
 
+    }
+    @Override
+    public void onLoadContent() {
+        //TODO 获取 网络 数据
+        mPresenter.getWeatherInfo();
+    }
+
+    @Override
+    public void onWeatherInfo(WeatherInfo info) {
+        //TODO 天气信息 (mPresenter.getWeatherInfo()  接口回调)
+        mTextView.setText(info.toString());
     }
 
     @Override
@@ -44,11 +64,6 @@ public class TestActivity extends MvpActivity<WeatherPresenter> implements Weath
         //TODO 保存 数据 以供 从低内存恢复 时 还原界面
     }
 
-    @Override
-    public void onCreatView() {
-        //TODO  初始化 组件
-        mTextView = findViewById(R.id.result_tv);
-    }
 
     @Override
     public void initImmersionBar() {
@@ -60,16 +75,5 @@ public class TestActivity extends MvpActivity<WeatherPresenter> implements Weath
         return true;
     }
 
-    @Override
-    public void onLoadContent() {
-        //TODO 在这个位置 获取 网络 数据
-        mPresenter.getWeatherInfo();
-    }
-
-    @Override
-    public void onWeatherInfo(WeatherInfo info) {
-        //TODO 天气信息 (mPresenter.getWeatherInfo()  接口回调)
-        mTextView.setText(info.toString());
-    }
 
 }
