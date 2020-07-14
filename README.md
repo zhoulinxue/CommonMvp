@@ -1,15 +1,15 @@
 # CommonMvp
 
-## 为新手提供一个 可靠 可用的 mvp 框架结构
+1、 有问题请 提交 isuue/(QQ:194093798) 谢谢大家 持续更新
 
-## 有问题请 提交 isuue/(QQ:194093798) 谢谢大家 持续更新
+2、为新手提供一个 可靠 可用的 mvp 框架结构
 
-## commonMvp 能做什么
+## commonMvp 能做什么？
  1、mvp 实现 model  view  presenter 业务和界面解耦
  2、整合 网络 请求
  3、简化网络调用流程
  4、整合状态栏和标题栏 实现沉浸式 状态栏
-## 配合使用的框架
+3、 配合使用的框架
     1、okhttp 、retrofit2、rxJava 、rxandroid (okhttp 实现网络全套)
     2、immersionbar  实现沉浸式状态栏
     3、fastjson 、gson  实现json 解析
