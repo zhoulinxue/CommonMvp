@@ -42,7 +42,7 @@ import java.util.List;
  * Description:
  */
 public abstract class BaseActivity extends AppCompatActivity implements BaseMvpView, ViewCreatApi<Intent>, SimpleImmersionOwner {
-    protected String TAG="commonMVp";
+    protected String TAG="commonMvp";
     private DialogApi mLoading;
     private ViewGroup mContentContainer;
     private ViewGroup mTitleContainer;

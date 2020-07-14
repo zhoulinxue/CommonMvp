@@ -24,6 +24,7 @@
         <activity android:name=".activitys.TestFragmentActivity" />
         <activity android:name=".activitys.TestTitleActivity" />
         <activity android:name=".activitys.StatusBarActivity" />
+        <activity android:name=".activitys.LifecycleActivity"/>
     </application>
 
 </manifest>

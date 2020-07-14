@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -50,6 +51,7 @@ public class ListItemActivity extends BaseActivity {
         datas.add("fragment 中 优雅的网络请求");
         datas.add("一句话 title栏");
         datas.add("状态栏 颜色");
+        datas.add("生命周期");
         StringAdapter adapter = new StringAdapter(datas);
         recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
@@ -67,6 +69,9 @@ public class ListItemActivity extends BaseActivity {
                         break;
                     case 3:
                         startActivity(new Intent(ListItemActivity.this, StatusBarActivity.class));
+                        break;
+                    case 4:
+                        startActivity(new Intent(ListItemActivity.this, LifecycleActivity.class));
                         break;
                     default:
                         break;

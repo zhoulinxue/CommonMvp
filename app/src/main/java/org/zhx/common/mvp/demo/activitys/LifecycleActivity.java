@@ -8,39 +8,36 @@ import org.zhx.common.mvp.uikit.activitys.BaseActivity;
 /**
  * @ProjectName: CommonMvp
  * @Package: org.zhx.common.mvp.demo.activitys
- * @ClassName: StatusBarActivity
+ * @ClassName: LifecycleActivity
  * @Description:java类作用描述
  * @Author: zhouxue
- * @CreateDate: 2020/7/14 17:48
+ * @CreateDate: 2020/7/14 18:02
  * @UpdateUser: 更新者
- * @UpdateDate: 2020/7/14 17:48
+ * @UpdateDate: 2020/7/14 18:02
  * @UpdateRemark: 更新说明
  * @Version:1.0
  */
-public class StatusBarActivity extends BaseActivity {
-
+public class LifecycleActivity extends BaseActivity {
     /**
-     * 是否开启 沉浸式状态栏 默认是开启
+     * 使用  commonMvp  查看  重置后的生命 周期   不必再 使用 actvity 原生的 onCreate(Bundle savedInstanceState) 方法
+     * 执行顺序为  初始化 presenter
+     * initPresenter()..
+     *
+     * 状态栏 相关
+     * immersionBarEnabled()..
+     * initImmersionBar()..
+     *
+     * 获取传递 的数据
+     * onLoadArgumentsData()..
+     *
+     * 初始化 view
+     *  onCreatView()..
+     *
+     *  设置数据  从网络 获取数据
+     *  onLoadContent()..
      *
      * @return
      */
-    @Override
-    public boolean immersionBarEnabled() {
-        return super.immersionBarEnabled();
-    }
-
-    /**
-     * 状态栏文字颜色仅仅支持  黑色 和白色
-     *
-     * @return
-     */
-    @Override
-    public boolean openDarkStatuBar() {
-        // false 白色状态栏   默认 为true
-        // true 是 黑色状态栏文字
-        return super.openDarkStatuBar();
-    }
-
     @Override
     public int initLayout() {
         return R.layout.test_title_layout;
@@ -48,7 +45,7 @@ public class StatusBarActivity extends BaseActivity {
 
     @Override
     public void onCreatView() {
-
+        mTitleProxy.setCommonTitle("生命周期");
     }
 
     @Override
