@@ -11,10 +11,13 @@
  4、整合状态栏和标题栏 实现沉浸式 状态栏
 ### 配合使用的框架
     1、okhttp 、retrofit2、rxJava 、rxandroid (okhttp 实现网络全套)
+
     2、immersionbar  实现沉浸式状态栏
+
     3、fastjson 、gson  实现json 解析
 
 ## 集成
+
 ```
 allprojects {
     repositories {
