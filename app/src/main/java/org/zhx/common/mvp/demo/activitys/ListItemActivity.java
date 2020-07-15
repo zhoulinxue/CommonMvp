@@ -51,7 +51,7 @@ public class ListItemActivity extends BaseActivity {
         datas.add("fragment 中 优雅的网络请求");
         datas.add("一句话 title栏");
         datas.add("状态栏 颜色");
-        datas.add("生命周期");
+        datas.add("onCreat生命周期");
         StringAdapter adapter = new StringAdapter(datas);
         recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {

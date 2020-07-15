@@ -1,6 +1,7 @@
 package org.zhx.common.mvp.demo.activitys;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import org.zhx.common.mvp.demo.R;
 import org.zhx.common.mvp.uikit.activitys.BaseActivity;
@@ -18,6 +19,7 @@ import org.zhx.common.mvp.uikit.activitys.BaseActivity;
  * @Version:1.0
  */
 public class StatusBarActivity extends BaseActivity {
+    private TextView mContent;
 
     /**
      * 是否开启 沉浸式状态栏 默认是开启
@@ -48,7 +50,8 @@ public class StatusBarActivity extends BaseActivity {
 
     @Override
     public void onCreatView() {
-
+        mContent=findViewById(R.id.content_tv);
+        mContent.setText("改变 openDarkStatuBar（）方法 返回值 调整 状态栏文字颜色  为黑色或是 白色");
     }
 
     @Override

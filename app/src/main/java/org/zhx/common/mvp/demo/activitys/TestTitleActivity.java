@@ -2,6 +2,7 @@ package org.zhx.common.mvp.demo.activitys;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import org.zhx.common.mvp.demo.R;
 import org.zhx.common.mvp.uikit.activitys.BaseActivity;
@@ -19,6 +20,7 @@ import org.zhx.common.mvp.uikit.activitys.BaseActivity;
  * @Version:1.0
  */
 public class TestTitleActivity extends BaseActivity {
+
     @Override
     public int initLayout() {
         return R.layout.test_title_layout;
