@@ -33,16 +33,14 @@ allprojects {
 ```
 ```
 dependencies {
- implementation 'org.zhx.common:uikits:1.0.0'
- implementation 'org.zhx.common:commonMvp:1.5.0'
+ implementation 'org.zhx.common:uikits:1.1.0'
  }
 ```
 ## 非Androidx 项目 ：
 build.gradle 中：
 ```
 	dependencies {
-	     implementation 'org.zhx.common:uikits:1.0.0'
-          implementation 'org.zhx.common:commonMvp:1.5.0'
+	     implementation 'org.zhx.common:uikits:1.1.0'
 	}
 ```
 并且 gradle.properties中 添加：
