@@ -52,6 +52,7 @@ public class ListItemActivity extends BaseActivity {
         datas.add("一句话 title栏");
         datas.add("状态栏 颜色");
         datas.add("onCreat生命周期");
+        datas.add("标题栏颜色");
         StringAdapter adapter = new StringAdapter(datas);
         recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
@@ -72,6 +73,9 @@ public class ListItemActivity extends BaseActivity {
                         break;
                     case 4:
                         startActivity(new Intent(ListItemActivity.this, LifecycleActivity.class));
+                        break;
+                    case 5:
+                        startActivity(new Intent(ListItemActivity.this,TitleColorActivity.class));
                         break;
                     default:
                         break;

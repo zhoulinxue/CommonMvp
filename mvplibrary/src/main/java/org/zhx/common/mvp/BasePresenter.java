@@ -34,6 +34,9 @@ public abstract class BasePresenter<V> {
     protected HttpManager manager;
     protected List<CommonNetRequest> mRequests = new ArrayList<>();
 
+    public BasePresenter() {
+    }
+
     public BasePresenter(V view) {
         this.mView = view;
         creatNewHttpManager();

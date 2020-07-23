@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.StringRes;
 
@@ -24,7 +26,7 @@ import org.zhx.common.mvp.uikit.utils.StatuBarUtil;
  * creatTime: 2019/3/25
  */
 public class AlphaTitleProxy implements AlphaTitle {
-    private String TAG=AlphaTitleProxy.class.getSimpleName();
+    private String TAG = AlphaTitleProxy.class.getSimpleName();
     private ViewGroup mContentContainer;
     private ViewGroup mTitleContainer;
     private int mStatusHeight = 0;
@@ -34,6 +36,7 @@ public class AlphaTitleProxy implements AlphaTitle {
     private View.OnClickListener mLisenter;
     private ImageView mBackImg;
     private TextView mTextOptionTv;
+    private boolean isCommonTitle = false;
 
     public AlphaTitleProxy(ViewGroup mContentContainer, ViewGroup mTitleContainer) {
         this.mContentContainer = mContentContainer;
@@ -84,9 +87,24 @@ public class AlphaTitleProxy implements AlphaTitle {
 
     @Override
     public void setCommonTitle(String title) {
+        isCommonTitle = true;
         setCoustomTitleView(R.layout.common_title_layout);
         setTitle(title);
         setTitleClickListener(null);
+    }
+
+    public void setCommonTitleColor(@ColorRes int color) {
+        if (isCommonTitle && color != 0) {
+            TextView title = mTitleContainer.findViewById(R.id.title_tv);
+            title.setTextColor(mContext.getResources().getColor(color));
+        }
+    }
+
+    public void setCommonTitleSize(int size) {
+        if (isCommonTitle && size != 0) {
+            TextView title = mTitleContainer.findViewById(R.id.title_tv);
+            title.setTextSize(size);
+        }
     }
 
     @Override
@@ -207,19 +225,18 @@ public class AlphaTitleProxy implements AlphaTitle {
         }
     }
 
-    public void setBackImageRes(@DrawableRes int drawable){
-        setBackImageRes(R.id.back_img,drawable);
+    public void setBackImageRes(@DrawableRes int drawable) {
+        setBackImageRes(R.id.back_img, drawable);
     }
 
-    public void setBackImageRes(int id,@DrawableRes int drawable){
-        if(mTitleContainer!=null){
+    public void setBackImageRes(int id, @DrawableRes int drawable) {
+        if (mTitleContainer != null) {
             try {
                 ImageView imageView = mTitleContainer.findViewById(id);
                 imageView.setImageResource(drawable);
-            }catch (Exception e){
-                Log.e(TAG,"返回键图标设置失败...请检查id...");
+            } catch (Exception e) {
+                Log.e(TAG, "返回键图标设置失败...请检查id...");
             }
         }
     }
-
 }

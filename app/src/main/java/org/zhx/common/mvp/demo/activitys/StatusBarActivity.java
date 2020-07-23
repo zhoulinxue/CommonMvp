@@ -51,7 +51,7 @@ public class StatusBarActivity extends BaseActivity {
     @Override
     public void onCreatView() {
         mContent=findViewById(R.id.content_tv);
-        mContent.setText("改变 openDarkStatuBar（）方法 返回值 调整 状态栏文字颜色  为黑色或是 白色");
+        mContent.setText("改变 openDarkStatuBar（）方法 返回值 \n调整 状态栏文字颜色  为黑色或是 白色");
     }
 
     @Override
