@@ -5,7 +5,7 @@ apply plugin: 'com.android.library'
 //    userOrg = 'zhx'//bintray.com用户名
 //    groupId = 'org.zhx.common'//jcenter上的路径,bintray上创建Package时填写的Version control项
 //    artifactId = 'commonMvp'//项目名称，bintray上创建Package时填写的Name项
-//    publishVersion = '1.5.1'//版本号
+//    publishVersion = '1.5.2'//版本号
 //    desc = 'easy mvp'//描述，不重要
 //    website = 'https://github.com/zhoulinxue/CommonMvp.git'//网站，
 //}

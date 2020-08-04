@@ -28,7 +28,7 @@ public class TitleColorActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 index++;
-                mTitleProxy.setCoustomTitleBarBackgroundColor(TitleColorActivity.this, index % 2 == 0 ? R.color.colorPrimary:R.color.colorAccent);
+                mTitleProxy.setCoustomTitleBarBackgroundColor(TitleColorActivity.this, index % 2 == 0 ? R.color.colorPrimary : R.color.colorAccent);
             }
         });
     }
@@ -46,5 +46,16 @@ public class TitleColorActivity extends BaseActivity {
     @Override
     public void onLoadContent() {
 
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.bottom_slid_in, R.anim.bottom_slid_out);
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

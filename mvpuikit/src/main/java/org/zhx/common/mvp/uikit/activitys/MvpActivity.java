@@ -36,9 +36,9 @@ public abstract class MvpActivity<T extends BasePresenter> extends BaseActivity 
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         if (mPresenter != null) {
             mPresenter.onDestory();
         }
+        super.onDestroy();
     }
 }

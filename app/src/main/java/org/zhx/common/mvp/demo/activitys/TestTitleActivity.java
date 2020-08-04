@@ -1,6 +1,7 @@
 package org.zhx.common.mvp.demo.activitys;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
 
@@ -48,6 +49,11 @@ public class TestTitleActivity extends BaseActivity {
     @Override
     public void onLoadDataFromSavedInstanceState(Bundle savedInstanceState) {
 
+    }
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(org.zhx.common.mvp.uikit.R.anim.bottom_slid_in, org.zhx.common.mvp.uikit.R.anim.bottom_slid_out);
     }
 
     @Override

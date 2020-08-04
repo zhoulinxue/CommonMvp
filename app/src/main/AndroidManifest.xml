@@ -4,7 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:allowBackup="true"
@@ -21,12 +22,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activitys.TitleColorActivity"/>
+        <activity android:name="org.zhx.common.bgstart.library.BridgeActivity" />
+        <activity
+            android:name=".activitys.TitleColorActivity"
+            android:theme="@style/TransparentTheme" />
         <activity android:name=".activitys.TestActivity" />
         <activity android:name=".activitys.TestFragmentActivity" />
         <activity android:name=".activitys.TestTitleActivity" />
         <activity android:name=".activitys.StatusBarActivity" />
-        <activity android:name=".activitys.LifecycleActivity"/>
+        <activity
+            android:name=".activitys.RouteActivity"
+            android:theme="@style/TransparentTheme" />
+        <activity android:name=".activitys.LifecycleActivity" />
     </application>
 
 </manifest>

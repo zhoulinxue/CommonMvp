@@ -2,6 +2,8 @@ package org.zhx.common.mvp.demo.activitys;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 
 import androidx.fragment.app.FragmentActivity;
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
+import org.zhx.common.bgstart.library.impl.BgStart;
 import org.zhx.common.mvp.demo.R;
 import org.zhx.common.mvp.demo.adapters.StringAdapter;
 import org.zhx.common.mvp.uikit.activitys.BaseActivity;
@@ -75,7 +78,7 @@ public class ListItemActivity extends BaseActivity {
                         startActivity(new Intent(ListItemActivity.this, LifecycleActivity.class));
                         break;
                     case 5:
-                        startActivity(new Intent(ListItemActivity.this,TitleColorActivity.class));
+                        startActivity(new Intent(ListItemActivity.this, TitleColorActivity.class));
                         break;
                     default:
                         break;
@@ -83,6 +86,20 @@ public class ListItemActivity extends BaseActivity {
             }
         });
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(getApplicationContext(), RouteActivity.class);
+                intent.setAction("test");
+                startActivity(intent);
+            }
+        }, 1000);
+    }
+
 
     @Override
     public void onLoadDataFromSavedInstanceState(Bundle savedInstanceState) {
