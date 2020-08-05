@@ -42,7 +42,7 @@ import java.util.List;
  * Description:
  */
 public abstract class BaseActivity extends AppCompatActivity implements BaseMvpView, ViewCreatApi<Intent>, SimpleImmersionOwner {
-    protected String TAG="commonMvp";
+    protected String TAG = "commonMvp";
     private DialogApi mLoading;
     private ViewGroup mContentContainer;
     private ViewGroup mTitleContainer;
@@ -64,23 +64,23 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
         initkeyBoard();
         Log.i("Activitys-->", this.getClass().getSimpleName());
         mHandler = new Handler();
-        Log.e(TAG,"initPresenter()..");
+        Log.e(TAG, "initPresenter()..");
         int layout = initLayout();
         if (layout != 0) {
             View view = getLayoutInflater().inflate(layout, null);
             setContentView(view);
         }
         if (getIntent() != null) {
-            Log.e(TAG,"onLoadArgumentsData()..");
+            Log.e(TAG, "onLoadArgumentsData()..");
             onLoadArgumentsData(getIntent());
         }
-        Log.e(TAG,"onCreatView()..");
+        Log.e(TAG, "onCreatView()..");
         onCreatView();
         if (savedInstanceState != null) {
-            Log.e(TAG,"onLoadDataFromSavedInstanceState()..");
+            Log.e(TAG, "onLoadDataFromSavedInstanceState()..");
             onLoadDataFromSavedInstanceState(savedInstanceState);
         }
-        Log.e(TAG,"onLoadContent()..");
+        Log.e(TAG, "onLoadContent()..");
         onLoadContent();
     }
 
@@ -106,10 +106,10 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
     public final void setContentView(View view) {
         setContentView(R.layout.layout_nomal);
         initTitleView();
-        Log.e(TAG,"immersionBarEnabled()..");
+        Log.e(TAG, "immersionBarEnabled()..");
         if (immersionBarEnabled())
-            Log.e(TAG,"initImmersionBar()..");
-            initImmersionBar();
+            Log.e(TAG, "initImmersionBar()..");
+        initImmersionBar();
         if (view != null) {
             Log.e("MainActivity", "!!!!!!!!!!");
             mContentContainer.addView(view);
@@ -187,9 +187,9 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
     @Override
     public void initImmersionBar() {
         if (openDarkStatuBar() || isOldAPI()) {
-            ImmersionBar.with(this).statusBarDarkFont(true, 0.2f).keyboardEnable(true).init();
+            ImmersionBar.with(this).statusBarDarkFont(true, 0.2f).init();
         } else {
-            ImmersionBar.with(this).keyboardEnable(true).init();
+            ImmersionBar.with(this).init();
         }
     }
 
@@ -257,4 +257,5 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
     public boolean immersionBarEnabled() {
         return true;
     }
+    
 }

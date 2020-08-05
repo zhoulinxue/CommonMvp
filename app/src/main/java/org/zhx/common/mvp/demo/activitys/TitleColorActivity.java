@@ -1,5 +1,8 @@
 package org.zhx.common.mvp.demo.activitys;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -8,6 +11,11 @@ import org.zhx.common.mvp.demo.R;
 import org.zhx.common.mvp.uikit.activitys.BaseActivity;
 
 public class TitleColorActivity extends BaseActivity {
+    public static void skip(Activity context) {
+        context.startActivity(new Intent(context, TitleColorActivity.class));
+        context.overridePendingTransition(R.anim.bottom_slid_in, R.anim.bottom_slid_out);
+    }
+
     @Override
     public int initLayout() {
         return R.layout.test_title_layout;

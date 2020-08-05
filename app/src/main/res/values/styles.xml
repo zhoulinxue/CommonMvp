@@ -9,7 +9,7 @@
     </style>
 
     <style name="welcome" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowAnimationStyle">@style/ActionSheetDialogAnimation</item>
+        <item name="android:windowAnimationStyle">@style/activityAnimation</item>
     </style>
     <!--继承Theme.AppCompat.NoActionBar，不显示标题栏-->
     <style name="TransparentTheme" parent="Theme.AppCompat.NoActionBar">
@@ -23,9 +23,12 @@
         <item name="android:windowTranslucentStatus">true</item>
     </style>
     <!-- ActionSheet进出动画 -->
-    <style name="ActionSheetDialogAnimation">
-        <item name="android:windowEnterAnimation">@anim/bottom_slid_in</item>
-        <item name="android:windowExitAnimation">@anim/bottom_slid_out</item>
+    <!-- animation 样式 -->
+    <style name="activityAnimation" parent="@android:style/Animation">
+        <item name="android:activityOpenEnterAnimation">@anim/bottom_slid_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/bottom_slid_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/bottom_slid_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/bottom_slid_out</item>
     </style>
     <color name="transparent_test">#D9ffffff</color>
 </resources>

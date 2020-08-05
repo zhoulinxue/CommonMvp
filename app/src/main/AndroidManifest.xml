@@ -22,7 +22,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="org.zhx.common.bgstart.library.BridgeActivity" />
         <activity
             android:name=".activitys.TitleColorActivity"
             android:theme="@style/TransparentTheme" />

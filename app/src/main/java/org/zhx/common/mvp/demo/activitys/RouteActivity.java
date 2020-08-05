@@ -34,8 +34,7 @@ public class RouteActivity extends AppCompatActivity {
                     mHandler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            startActivity(new Intent(RouteActivity.this, TitleColorActivity.class));
-                            overridePendingTransition(R.anim.bottom_slid_in,0);
+                            TitleColorActivity.skip(RouteActivity.this);
                             finish();
                         }
                     }, 300);
