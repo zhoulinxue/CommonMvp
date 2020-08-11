@@ -93,6 +93,15 @@ public class AlphaTitleProxy implements AlphaTitle {
         setTitleClickListener(null);
     }
 
+    public void updateCommonTitle(String title) {
+        setTitle(title);
+    }
+
+    public void updateCommonTitle(@StringRes int title) {
+        if (title != 0)
+            setTitle(mTitleContainer.getContext().getResources().getString(title));
+    }
+
     public void setCommonTitleColor(@ColorRes int color) {
         if (isCommonTitle && color != 0) {
             TextView title = mTitleContainer.findViewById(R.id.title_tv);
