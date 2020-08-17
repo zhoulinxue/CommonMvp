@@ -3,6 +3,9 @@ package org.zhx.common.commonnetwork;
 import android.text.TextUtils;
 import android.util.Log;
 
+import org.zhx.common.commonnetwork.customObservable.CommonCallAdapterFactory;
+import org.zhx.common.commonnetwork.retrofit.FastJsonConverterFactory;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,8 +24,9 @@ public class HttpManager {
     private static HttpManager manager;
     private Map<String, Object> okhttpModel = new HashMap<>();
     private Map<String, OkHttpFactory> builderMap = new HashMap<>();
-    public static String DEFAULT_TAG ="HttpManager";
-    private Converter.Factory  mConvertFactory;
+    public static String DEFAULT_TAG = "HttpManager";
+    private Converter.Factory mConvertFactory;
+
     public static HttpManager getInstance() {
         if (manager == null) {
             synchronized (HttpManager.class) {
@@ -38,9 +42,35 @@ public class HttpManager {
     /**
      * 初始化 client
      */
-    public void init(Converter.Factory  convertFactory) {
-        this.mConvertFactory=convertFactory;
-        OkConfig builder = new OkConfigBuilder(DEFAULT_TAG).build();
+    public void init() {
+        init(FastJsonConverterFactory.create(), null);
+    }
+
+    /**
+     * 初始化 client
+     */
+    public void init(HeaderInterceptor interceptor) {
+        init(FastJsonConverterFactory.create(), interceptor);
+    }
+
+    /**
+     * 初始化 client
+     */
+    public void init(Converter.Factory convertFactory) {
+        init(convertFactory, null);
+    }
+
+    /**
+     * 初始化 client
+     */
+    public void init(Converter.Factory convertFactory, HeaderInterceptor interceptor) {
+        this.mConvertFactory = convertFactory;
+        OkConfig builder = new OkConfigBuilder(DEFAULT_TAG)
+                .setCallFactory(CommonCallAdapterFactory.create())
+                .setConverterFactory(convertFactory)
+                .setHttps(true)
+                .setInterceptor(interceptor)
+                .build();
         initFactoryByTag(builder);
     }
 
@@ -58,7 +88,7 @@ public class HttpManager {
     }
 
     public OkHttpFactory creatNewFactory(OkConfig okConfig) {
-        OkHttpFactory factory=new OkHttpFactory(mConvertFactory);
+        OkHttpFactory factory = new OkHttpFactory(mConvertFactory);
         factory.creatBuilderFromCofig(okConfig);
         return factory;
     }
@@ -109,17 +139,17 @@ public class HttpManager {
      * @param <T>
      * @return
      */
-    public <T> T with(Class<T> service,  OkConfig config) {
-        OkHttpFactory factory=null;
-        if(config!=null){
-            factory=builderMap.get(config.getBuilderTag());
-            if(factory==null) {
+    public <T> T with(Class<T> service, OkConfig config) {
+        OkHttpFactory factory = null;
+        if (config != null) {
+            factory = builderMap.get(config.getBuilderTag());
+            if (factory == null) {
                 factory = creatNewFactory(config);
                 builderMap.put(config.getBuilderTag(), factory);
             }
         }
         if (service != null) {
-            T object = (T)okhttpModel.get(service.getSimpleName());
+            T object = (T) okhttpModel.get(service.getSimpleName());
             if (object == null) {
                 Log.e(TAG, "creat  new Model" + service.getSimpleName());
                 object = creatServerFromFactory(factory, service);

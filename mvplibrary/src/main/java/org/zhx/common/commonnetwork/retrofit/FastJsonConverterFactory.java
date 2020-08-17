@@ -1,4 +1,4 @@
-package org.zhx.common.mvp.retrofit;
+package org.zhx.common.commonnetwork.retrofit;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.parser.Feature;

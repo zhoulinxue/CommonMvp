@@ -33,17 +33,11 @@ allprojects {
 ```
 ```
 dependencies {
- implementation 'org.zhx.common:uikits:1.1.0'
+ implementation 'org.zhx.common:uikits:1.1.4'
  }
 ```
 ## 非Androidx 项目 ：
-build.gradle 中：
-```
-	dependencies {
-	     implementation 'org.zhx.common:uikits:1.1.0'
-	}
-```
-并且 gradle.properties中 添加：
+ gradle.properties中 添加：
 ```
 android.useAndroidX=true
 android.enableJetifier=true

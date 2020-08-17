@@ -8,7 +8,7 @@ import org.zhx.common.commonnetwork.OkConfig;
 import org.zhx.common.commonnetwork.OkConfigBuilder;
 import org.zhx.common.commonnetwork.api.CommonNetRequest;
 import org.zhx.common.commonnetwork.customObservable.CommonCallAdapterFactory;
-import org.zhx.common.mvp.retrofit.FastJsonConverterFactory;
+import org.zhx.common.commonnetwork.retrofit.FastJsonConverterFactory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
