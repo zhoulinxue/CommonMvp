@@ -44,8 +44,7 @@ public class ListItemActivity extends BaseActivity {
         mTitleProxy.setContentViewBelowTitleBar(true);
         mTitleProxy.setCommonBackImageVisible(View.GONE);
         showTitleDivider();
-        RecyclerView recyclerView = findViewById(R.id.list_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         List<String> datas = new ArrayList<>();
         datas.add("activity 中 优雅的网络请求");
         datas.add("fragment 中 优雅的网络请求");
@@ -53,6 +52,8 @@ public class ListItemActivity extends BaseActivity {
         datas.add("状态栏 颜色");
         datas.add("onCreat生命周期");
         datas.add("标题栏颜色");
+        RecyclerView recyclerView = findViewById(R.id.list_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         StringAdapter adapter = new StringAdapter(datas);
         recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
