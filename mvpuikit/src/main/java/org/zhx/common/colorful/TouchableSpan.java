@@ -1,4 +1,4 @@
-package org.zhx.common.mvp.uikit.utils.colorful;
+package org.zhx.common.colorful;
 
 import android.graphics.Color;
 import android.text.TextPaint;
