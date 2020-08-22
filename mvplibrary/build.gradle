@@ -50,7 +50,6 @@ dependencies {
     //------------------------------
     //fastjson
     api 'com.alibaba:fastjson:1.1.71.android'
-    api 'com.gyf.immersionbar:immersionbar:2.3.1'
 }
 tasks.withType(Javadoc) {
     options.addStringOption("Xdoclint:none", "-quiet")

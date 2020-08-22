@@ -30,6 +30,7 @@ import org.zhx.common.mvp.uikit.api.widgets.DialogApi;
 import org.zhx.common.mvp.uikit.widgets.LoadingDialog;
 import org.zhx.common.mvp.utils.AppUtils;
 import org.zhx.common.mvp.utils.InputMethodUtils;
+import org.zhx.common.statubar.CommonStatusBar;
 
 import java.util.List;
 
@@ -187,9 +188,9 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
     @Override
     public void initImmersionBar() {
         if (openDarkStatuBar() || isOldAPI()) {
-            ImmersionBar.with(this).statusBarDarkFont(true, 0.2f).init();
+            CommonStatusBar.acticity(this).blackText().set();
         } else {
-            ImmersionBar.with(this).init();
+            CommonStatusBar.acticity(this).whiteText().set();
         }
     }
 
@@ -257,5 +258,5 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
     public boolean immersionBarEnabled() {
         return true;
     }
-    
+
 }
