@@ -85,14 +85,14 @@ public class ListItemActivity extends BaseActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(getApplicationContext(), RouteActivity.class);
-                intent.setAction("test");
-                startActivity(intent);
-            }
-        }, 1000);
+//        mHandler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                Intent intent = new Intent(getApplicationContext(), RouteActivity.class);
+//                intent.setAction("test");
+//                startActivity(intent);
+//            }
+//        }, 1000);
     }
 
 

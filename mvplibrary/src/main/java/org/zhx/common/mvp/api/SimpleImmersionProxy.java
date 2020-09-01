@@ -6,8 +6,6 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.gyf.barlibrary.ImmersionBar;
-
 /**
  * Fragment快速实现沉浸式的代理类
  *
@@ -47,9 +45,6 @@ public class SimpleImmersionProxy {
     }
 
     public void onDestroy() {
-        if (mFragment != null && mFragment.getActivity() != null && mSimpleImmersionOwner.immersionBarEnabled()) {
-            ImmersionBar.with(mFragment).destroy();
-        }
         mFragment = null;
         mSimpleImmersionOwner = null;
     }

@@ -1,10 +1,10 @@
 package org.zhx.common.mvp.demo.mvp.presenters;
 
 import org.zhx.common.commonnetwork.OkConfig;
+import org.zhx.common.commonnetwork.retrofit.FastJsonConverterFactory;
 import org.zhx.common.mvp.BasePresenter;
 import org.zhx.common.mvp.demo.bean.WeatherInfo;
 import org.zhx.common.mvp.demo.mvp.models.WeatherApi;
-import org.zhx.common.mvp.retrofit.FastJsonConverterFactory;
 import org.zhx.common.mvp.uikit.impl.ObjectNetRequstAdapter;
 
 import okhttp3.Interceptor;

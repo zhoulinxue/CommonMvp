@@ -18,8 +18,6 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.gyf.barlibrary.ImmersionBar;
-
 import org.zhx.common.commonnetwork.api.CommonNetRequest;
 import org.zhx.common.mvp.uikit.R;
 import org.zhx.common.mvp.uikit.impl.AlphaTitleProxy;

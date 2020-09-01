@@ -17,8 +17,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.gyf.barlibrary.ImmersionBar;
-
 import org.zhx.common.mvp.uikit.R;
 import org.zhx.common.mvp.uikit.impl.AlphaTitleProxy;
 import org.zhx.common.mvp.api.SimpleImmersionFragment;
@@ -26,6 +24,7 @@ import org.zhx.common.mvp.api.ViewCreatApi;
 import org.zhx.common.mvp.uikit.api.widgets.BaseMvpView;
 import org.zhx.common.mvp.uikit.api.widgets.DialogApi;
 import org.zhx.common.mvp.uikit.widgets.LoadingDialog;
+import org.zhx.common.statubar.CommonStatusBar;
 
 
 /**
@@ -115,9 +114,9 @@ public abstract class BaseFragment extends SimpleImmersionFragment implements Ba
     @Override
     public void initImmersionBar() {
         if (openDarkStatuBar() || isOldAPI()) {
-            ImmersionBar.with(this).statusBarDarkFont(true, 0.2f).keyboardEnable(true).init();
+            CommonStatusBar.acticity(getActivity()).blackText().set();
         } else {
-            ImmersionBar.with(this).keyboardEnable(true).init();
+            CommonStatusBar.acticity(getActivity()).whiteText().set();
         }
     }
 

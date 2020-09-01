@@ -44,7 +44,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 //    api project(path: ':mvplibrary')
-    api 'org.zhx.common:commonMvp:1.5.2'
+    api 'org.zhx.common:commonMvp:1.5.3'
+    api  'org.zhx.common:commonStatuBar:1.0.3'
 }
 tasks.withType(Javadoc) {
     options.addStringOption("Xdoclint:none", "-quiet")
