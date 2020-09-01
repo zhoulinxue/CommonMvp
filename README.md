@@ -18,7 +18,7 @@
 ### 配合使用的框架
     1、okhttp 、retrofit2、rxJava 、rxandroid (okhttp 实现网络全套)
 
-    2、immersionbar  实现沉浸式状态栏
+    2、commonStatuBar  实现沉浸式状态栏
 
     3、fastjson   实现json 解析
 
@@ -33,7 +33,7 @@ allprojects {
 ```
 ```
 dependencies {
- implementation 'org.zhx.common:uikits:1.1.4'
+ implementation 'org.zhx.common:uikits:1.1.5'
  }
 ```
 ## 非Androidx 项目 ：
