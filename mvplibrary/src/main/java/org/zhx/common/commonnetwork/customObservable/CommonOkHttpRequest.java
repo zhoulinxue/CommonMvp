@@ -63,9 +63,8 @@ public class CommonOkHttpRequest<R, T> implements CommonNetRequest {
     }
 
     private void add(List<CommonNetRequest> request) {
-        Log.e(TAG, "add..");
         if (request != null && !request.contains(this)) {
-            Log.e(TAG, "add..request");
+            Log.e(TAG, "request...added");
             request.add(this);
         }
     }
