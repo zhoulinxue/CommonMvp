@@ -18,7 +18,7 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.gyf.barlibrary.ImmersionBar;
+import com.gyf.immersionbar.ImmersionBar;
 
 import org.zhx.common.commonnetwork.api.CommonNetRequest;
 import org.zhx.common.mvp.uikit.R;
@@ -187,9 +187,9 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
     @Override
     public void initImmersionBar() {
         if (openDarkStatuBar() || isOldAPI()) {
-            ImmersionBar.with(this).statusBarDarkFont(true, 0.2f).keyboardEnable(true).init();
+            ImmersionBar.with(this).statusBarDarkFont(true, 0.2f).keyboardEnable(isBottomInput()).init();
         } else {
-            ImmersionBar.with(this).keyboardEnable(true).init();
+            ImmersionBar.with(this).keyboardEnable(isBottomInput()).init();
         }
     }
 
@@ -256,5 +256,10 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
     @Override
     public boolean immersionBarEnabled() {
         return true;
+    }
+
+    @Override
+    public boolean isBottomInput() {
+        return false;
     }
 }

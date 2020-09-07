@@ -15,35 +15,41 @@ public interface ViewCreatApi<T> {
      *
      * @return
      */
-    public  int initLayout();
+    public int initLayout();
 
     /**
      * 布局已设置完
      */
-    public  void onCreatView();
+    public void onCreatView();
 
     /**
      * 获取传递参数
      *
      * @param data
      */
-    public  void onLoadArgumentsData(T data);
+    public void onLoadArgumentsData(T data);
 
     /**
      * 从 savedInstanceState 中获取 数据
      *
      * @param savedInstanceState
      */
-    public  void onLoadDataFromSavedInstanceState(Bundle savedInstanceState);
+    public void onLoadDataFromSavedInstanceState(Bundle savedInstanceState);
 
     /**
      * 加载 网络数据
      */
-    public  void onLoadContent();
+    public void onLoadContent();
 
     /**
-     *
      * @return
      */
     public View getRootView();
+
+    /**
+     * 底部是否有输入框
+     * @return
+     */
+
+    public  boolean isBottomInput() ;
 }

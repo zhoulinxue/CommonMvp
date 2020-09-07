@@ -17,7 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.gyf.barlibrary.ImmersionBar;
+import com.gyf.immersionbar.ImmersionBar;
 
 import org.zhx.common.mvp.uikit.R;
 import org.zhx.common.mvp.uikit.impl.AlphaTitleProxy;
@@ -115,9 +115,9 @@ public abstract class BaseFragment extends SimpleImmersionFragment implements Ba
     @Override
     public void initImmersionBar() {
         if (openDarkStatuBar() || isOldAPI()) {
-            ImmersionBar.with(this).statusBarDarkFont(true, 0.2f).keyboardEnable(true).init();
+            ImmersionBar.with(this).statusBarDarkFont(true, 0.2f).keyboardEnable(isBottomInput()).init();
         } else {
-            ImmersionBar.with(this).keyboardEnable(true).init();
+            ImmersionBar.with(this).keyboardEnable(isBottomInput()).init();
         }
     }
 
@@ -234,5 +234,10 @@ public abstract class BaseFragment extends SimpleImmersionFragment implements Ba
     @Override
     public View getRootView() {
         return rootView;
+    }
+
+    @Override
+    public boolean isBottomInput() {
+        return false;
     }
 }

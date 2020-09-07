@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.StringRes;
@@ -91,6 +90,15 @@ public class AlphaTitleProxy implements AlphaTitle {
         setCoustomTitleView(R.layout.common_title_layout);
         setTitle(title);
         setTitleClickListener(null);
+    }
+
+    public void updateCommonTitle(String title) {
+        setTitle(title);
+    }
+
+    public void updateCommonTitle(@StringRes int title) {
+        if (title != 0)
+            setTitle(mTitleContainer.getContext().getResources().getString(title));
     }
 
     public void setCommonTitleColor(@ColorRes int color) {
