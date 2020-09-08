@@ -4,8 +4,8 @@ publish {
     repoName = 'common'//远程仓库名字,不指明，默认是上传到maven
     userOrg = 'zhx'//bintray.com用户名
     groupId = 'org.zhx.common'//jcenter上的路径,bintray上创建Package时填写的Version control项
-    artifactId = 'uikits'//项目名称，bintray上创建Package时填写的Name项
-    publishVersion = '1.1.6'//版本号
+    artifactId = 'uikits-tools'//项目名称，bintray上创建Package时填写的Name项
+    publishVersion = '1.0.0'//版本号
     desc = 'easy mvp'//描述，不重要
     website = 'https://github.com/zhoulinxue/CommonMvp.git'//网站，
 }
@@ -43,8 +43,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    api project(path: ':mvplibrary')
-//    api 'org.zhx.common:commonMvp:1.5.1'
+//    api project(path: ':mvplibrary')
+    api 'org.zhx.common:commonMvp:1.5.6'
 }
 tasks.withType(Javadoc) {
     options.addStringOption("Xdoclint:none", "-quiet")
