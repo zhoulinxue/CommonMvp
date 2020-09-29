@@ -1,5 +1,6 @@
 package org.zhx.common.mvp;
 
+import android.os.Bundle;
 import android.util.Log;
 
 import org.zhx.common.commonnetwork.HeaderInterceptor;
@@ -8,7 +9,7 @@ import org.zhx.common.commonnetwork.OkConfig;
 import org.zhx.common.commonnetwork.OkConfigBuilder;
 import org.zhx.common.commonnetwork.api.CommonNetRequest;
 import org.zhx.common.commonnetwork.customObservable.CommonCallAdapterFactory;
-import org.zhx.common.mvp.retrofit.FastJsonConverterFactory;
+import org.zhx.common.commonnetwork.retrofit.FastJsonConverterFactory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -59,6 +60,10 @@ public abstract class BasePresenter<V> {
     protected OkConfig onCreatHttpCofig() {
         OkConfig config = creatNewConfigByTag(HttpManager.DEFAULT_TAG);
         return config;
+    }
+
+    public void onSaveInstanceState(Bundle bundle) {
+
     }
 
     protected OkConfig creatNewConfigByTag(String tag) {

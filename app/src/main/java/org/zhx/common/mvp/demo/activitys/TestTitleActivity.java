@@ -2,7 +2,6 @@ package org.zhx.common.mvp.demo.activitys;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import org.zhx.common.mvp.demo.R;
 import org.zhx.common.mvp.uikit.activitys.BaseActivity;

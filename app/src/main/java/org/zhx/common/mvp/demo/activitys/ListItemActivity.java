@@ -3,9 +3,6 @@ package org.zhx.common.mvp.demo.activitys;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
-import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 

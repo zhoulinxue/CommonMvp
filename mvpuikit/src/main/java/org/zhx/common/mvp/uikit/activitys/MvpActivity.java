@@ -3,6 +3,7 @@ package org.zhx.common.mvp.uikit.activitys;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.zhx.common.commonnetwork.api.CommonNetRequest;
@@ -25,13 +26,21 @@ public abstract class MvpActivity<T extends BasePresenter> extends BaseActivity 
     @Override
     protected final void onCreate(@Nullable Bundle savedInstanceState) {
         mPresenter = initPresenter();
-        Log.e(TAG,"initPresenter()..");
+        Log.e(TAG, "initPresenter()..");
         super.onCreate(savedInstanceState);
     }
 
     @Override
     public List<CommonNetRequest> getRequestList() {
         return mPresenter != null ? mPresenter.getRequests() : new ArrayList<CommonNetRequest>();
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (mPresenter != null) {
+            mPresenter.onSaveInstanceState(outState);
+        }
     }
 
     @Override

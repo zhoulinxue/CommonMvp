@@ -1,5 +1,6 @@
 package org.zhx.common.mvp.demo.activitys;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -75,5 +76,9 @@ public class TestActivity extends MvpActivity<WeatherPresenter> implements Weath
         return true;
     }
 
-
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, ListItemActivity.class));
+        finish();
+    }
 }

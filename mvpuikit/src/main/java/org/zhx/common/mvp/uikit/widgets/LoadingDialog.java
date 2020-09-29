@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import org.zhx.common.mvp.uikit.R;
@@ -43,8 +44,14 @@ public class LoadingDialog extends Dialog implements DialogApi {
     private void initView() {
         View view = getLayoutInflater().inflate(R.layout.common_layout_loading, null);
         this.setContentView(view);
-        this.getWindow().getAttributes().gravity = Gravity.CENTER;
         this.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        WindowManager.LayoutParams lp = this.getWindow().getAttributes();
+        lp.gravity = Gravity.CENTER;
+
+        //设置窗口宽度为充满全屏
+        lp.width = 500;
+        //设置窗口高度为包裹内容
+        lp.height = 500;
         tvMsg = view.findViewById(R.id.commone_loading_tv);
         if (tvMsg != null) {
             tvMsg.setText(message);

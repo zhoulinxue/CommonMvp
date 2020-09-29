@@ -52,6 +52,5 @@ public class TestFragment extends MvpFragment<WeatherPresenter> implements Weath
     public void onWeatherInfo(WeatherInfo info) {
         //TODO 天气信息 (mPresenter.getWeatherInfo()  接口回调)
         mTextView.setText(info.toString());
-
     }
 }

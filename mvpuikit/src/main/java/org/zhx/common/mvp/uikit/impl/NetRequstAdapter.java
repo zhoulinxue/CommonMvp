@@ -52,16 +52,20 @@ public abstract class NetRequstAdapter<R, T> implements CommonNetRequestCallBack
         Log.e("OkHttpRequest", "onError..NetRequstAdapter...");
         if (mvpView != null) {
             long time = CommonFileCacheUtil.shake(mvpView.getContext(), sharkeKey, 0);
-            synchronized (NetRequstAdapter.class) {
-                if (!NetWorkUtil.checkNetWorkStatus(mvpView.getContext())) {
-                    if (System.currentTimeMillis() - time > 5000) {
+            if (System.currentTimeMillis() - time > 3000) {
+                synchronized (NetRequstAdapter.class) {
+                    if (!NetWorkUtil.checkNetWorkStatus(mvpView.getContext())) {
                         CommonFileCacheUtil.save(mvpView.getContext(), sharkeKey, System.currentTimeMillis());
-                        mvpView.onError("-1", CommonLocalError.BAD_NETWORK.getErrorMsg());
+                        onShowError("-1080707", CommonLocalError.BAD_NETWORK.getErrorMsg());
+                        return;
                     }
-                    return;
                 }
+                onShowError(responseCode + "", msg);
             }
-            mvpView.onError(responseCode + "", msg);
         }
+    }
+
+    private void onShowError(String code, String errorMsg) {
+        mvpView.onError(code, isShowToast ? errorMsg : "");
     }
 }
