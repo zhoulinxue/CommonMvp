@@ -36,11 +36,12 @@ public abstract class BasePresenter<V> {
     protected List<CommonNetRequest> mRequests = new ArrayList<>();
 
     public BasePresenter() {
+        creatNewHttpManager();
     }
 
     public BasePresenter(V view) {
+        super();
         this.mView = view;
-        creatNewHttpManager();
     }
 
     /**
