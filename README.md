@@ -33,14 +33,14 @@ allprojects {
 ```
 ```
 dependencies {
-  implementation 'org.zhx.common:uikits-tools:1.0.5'
+  implementation 'org.zhx.common:uikits-tools:latestVersion'
  }
 ```
 ## 非Androidx 项目 ：
 build.gradle 中：
 ```
 	dependencies {
-	     implementation 'org.zhx.common:uikits-tools:1.0.5'
+	     implementation 'org.zhx.common:uikits-tools:latestVersion'
 	}
 ```
 并且 gradle.properties中 添加：

@@ -40,7 +40,7 @@ public abstract class BasePresenter<V> {
     }
 
     public BasePresenter(V view) {
-        this();
+        creatNewHttpManager();
         this.mView = view;
     }
 
