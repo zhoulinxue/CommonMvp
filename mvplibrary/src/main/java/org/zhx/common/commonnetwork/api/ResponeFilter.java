@@ -13,7 +13,7 @@ package org.zhx.common.commonnetwork.api;
  * @Version:1.0
  */
 public interface ResponeFilter {
-    public void onError(String code, String message);
+    public boolean onError(String code, String message);
 
     public void onResult(Object object);
 }

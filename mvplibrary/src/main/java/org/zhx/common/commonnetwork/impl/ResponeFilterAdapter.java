@@ -16,8 +16,8 @@ import org.zhx.common.commonnetwork.api.ResponeFilter;
  */
 public class ResponeFilterAdapter implements ResponeFilter {
     @Override
-    public void onError(String code, String message) {
-
+    public boolean onError(String code, String message) {
+        return false;
     }
 
     @Override

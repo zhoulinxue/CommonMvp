@@ -51,10 +51,11 @@ public abstract class NetRequstAdapter<R, T> implements CommonNetRequestCallBack
     @Override
     public void onError(String responseCode, String msg) {
         Log.e("OkHttpRequest", "onError..NetRequstAdapter...");
+        boolean isFilter = false;
         if (CommonOkHttp.mFilter != null) {
-            CommonOkHttp.mFilter.onError(responseCode, msg);
+            isFilter = CommonOkHttp.mFilter.onError(responseCode, msg);
         }
-        if (mvpView != null) {
+        if (mvpView != null && !isFilter) {
             long time = CommonFileCacheUtil.shake(mvpView.getContext(), sharkeKey, 0);
             if (System.currentTimeMillis() - time > 3000) {
                 synchronized (NetRequstAdapter.class) {
