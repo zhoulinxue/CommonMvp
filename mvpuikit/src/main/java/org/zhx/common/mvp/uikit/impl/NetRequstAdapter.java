@@ -3,9 +3,11 @@ package org.zhx.common.mvp.uikit.impl;
 
 import android.util.Log;
 
+import org.zhx.common.commonnetwork.CommonOkHttp;
 import org.zhx.common.commonnetwork.NetWorkUtil;
 import org.zhx.common.commonnetwork.api.CommonLocalError;
 import org.zhx.common.commonnetwork.api.CommonNetRequestCallBack;
+import org.zhx.common.mvp.uikit.CommonMvp;
 import org.zhx.common.mvp.uikit.api.widgets.BaseMvpView;
 import org.zhx.common.mvp.utils.CommonFileCacheUtil;
 
@@ -50,6 +52,9 @@ public abstract class NetRequstAdapter<R, T> implements CommonNetRequestCallBack
     @Override
     public void onError(String responseCode, String msg) {
         Log.e("OkHttpRequest", "onError..NetRequstAdapter...");
+        if (CommonOkHttp.mFilter != null) {
+            CommonOkHttp.mFilter.onError(responseCode, msg);
+        }
         if (mvpView != null) {
             long time = CommonFileCacheUtil.shake(mvpView.getContext(), sharkeKey, 0);
             if (System.currentTimeMillis() - time > 3000) {

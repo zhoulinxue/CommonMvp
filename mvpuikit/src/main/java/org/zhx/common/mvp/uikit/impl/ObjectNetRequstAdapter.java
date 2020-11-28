@@ -1,6 +1,8 @@
 package org.zhx.common.mvp.uikit.impl;
 
+import org.zhx.common.commonnetwork.CommonOkHttp;
 import org.zhx.common.commonnetwork.api.CommonNetRequest;
+import org.zhx.common.mvp.uikit.CommonMvp;
 import org.zhx.common.mvp.uikit.api.widgets.BaseMvpView;
 
 import java.util.List;
@@ -30,6 +32,9 @@ public abstract class ObjectNetRequstAdapter<R> extends NetRequstAdapter<R, Void
 
     @Override
     public final boolean onResult(R info) {
+        if (CommonOkHttp.mFilter != null) {
+            CommonOkHttp.mFilter.onResult(info);
+        }
         onResultData(info);
         return true;
     }
