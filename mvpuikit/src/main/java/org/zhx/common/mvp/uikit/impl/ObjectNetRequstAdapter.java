@@ -2,7 +2,6 @@ package org.zhx.common.mvp.uikit.impl;
 
 import org.zhx.common.commonnetwork.CommonOkHttp;
 import org.zhx.common.commonnetwork.api.CommonNetRequest;
-import org.zhx.common.mvp.uikit.CommonMvp;
 import org.zhx.common.mvp.uikit.api.widgets.BaseMvpView;
 
 import java.util.List;

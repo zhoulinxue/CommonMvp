@@ -7,7 +7,6 @@ import org.zhx.common.commonnetwork.CommonOkHttp;
 import org.zhx.common.commonnetwork.NetWorkUtil;
 import org.zhx.common.commonnetwork.api.CommonLocalError;
 import org.zhx.common.commonnetwork.api.CommonNetRequestCallBack;
-import org.zhx.common.mvp.uikit.CommonMvp;
 import org.zhx.common.mvp.uikit.api.widgets.BaseMvpView;
 import org.zhx.common.mvp.utils.CommonFileCacheUtil;
 
