@@ -19,7 +19,7 @@ import retrofit2.Converter;
  * Date: 2020/1/21 11:17
  * Description:
  */
-class OkConfig {
+public class OkConfig {
     private static final int DEFAULT_TIME = 15;
     private HeaderInterceptor interceptor;
     private Context context;
