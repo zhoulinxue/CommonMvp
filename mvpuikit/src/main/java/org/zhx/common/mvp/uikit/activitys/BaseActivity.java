@@ -166,6 +166,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
     protected final void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         onLoadArgumentsData(intent);
+        onLoadContent();
     }
 
 
