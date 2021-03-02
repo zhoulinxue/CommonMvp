@@ -5,7 +5,7 @@ publish {
     userOrg = 'zhx'//bintray.com用户名
     groupId = 'org.zhx.common'//jcenter上的路径,bintray上创建Package时填写的Version control项
     artifactId = 'uikits-tools'//项目名称，bintray上创建Package时填写的Name项
-    publishVersion = '1.0.9'//版本号
+    publishVersion = '1.1.0'//版本号
     desc = 'easy mvp'//描述，不重要
     website = 'https://github.com/zhoulinxue/CommonMvp.git'//网站，
 }
@@ -44,7 +44,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 //    api project(path: ':mvplibrary')
-    api 'org.zhx.common:commonMvp:1.6.2'
+    api 'com.github.zhoulinxue:CommonOkHttp:1.0.0'
 }
 tasks.withType(Javadoc) {
     options.addStringOption("Xdoclint:none", "-quiet")

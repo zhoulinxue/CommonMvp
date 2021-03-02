@@ -27,20 +27,20 @@
 ```
 allprojects {
     repositories {
-        jcenter()
+         maven { url 'https://jitpack.io' }
     }
 }
 ```
 ```
 dependencies {
-  implementation 'org.zhx.common:uikits-tools:1.0.9'
+   implementation 'com.github.zhoulinxue:CommonMvp:1.0.9'
  }
 ```
 ## 非Androidx 项目 ：
 build.gradle 中：
 ```
 	dependencies {
-	     implementation 'org.zhx.common:uikits-tools:1.0.9'
+	      implementation 'com.github.zhoulinxue:CommonMvp:1.0.9'
 	}
 ```
 并且 gradle.properties中 添加：
